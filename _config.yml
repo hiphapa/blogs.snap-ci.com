@@ -1,0 +1,5 @@
+name: The Snap Blog
+pygments: true
+paginate: 5
+safe: false
+exclude: ['Gemfile', 'Gemfile.lock']

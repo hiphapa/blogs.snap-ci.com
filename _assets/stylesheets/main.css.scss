@@ -1,2 +1,68 @@
 @import 'compass';
 @import 'compass/reset';
+@import 'fonts.css.scss';
+
+$color1: #377F79;
+$color2: #43B0A7;
+$color3: #64CBC3;
+$color4: #B6B6B6;
+$color5: #D4D4D4;
+
+/*@color1: #299FA4;
+@color2: #38D2D9;
+@color3: #6BE5EA;
+@color4: #CDCDCD;
+@color5: #EFEFEF;
+*/
+body {
+  font-family: 'OpenSansLight' Helvetica Arial 'sans serif';
+  font-size: 18px;
+  line-height: 2.2;
+  background-color: #F0F0F0;
+  color: #676767;
+  
+  a {
+    color: rgb(30, 80, 200);
+    text-decoration: none;
+    
+    &:visited {
+      color: rgb(100, 80, 200);
+    };
+  }
+  
+  .site {
+    .header {
+      .title {
+        font-size: 36px;
+        text-align: center;
+      }
+    }
+    
+    .footer {
+      margin-top: 20px;
+    }
+  }
+  
+  #home {
+    width: 60%;
+    margin: 0 auto;
+    
+    .posts {
+      padding: 16px;
+
+      .post {
+        font-size: 13px;
+
+        .title {
+          font-size: 18px;
+        }
+      }
+    }
+
+    .pagination {
+      margin-top: 50px;
+      font-size: 12px;
+      text-align: center;
+    }
+  }
+}

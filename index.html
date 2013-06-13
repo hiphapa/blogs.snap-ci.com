@@ -1,36 +1,31 @@
 ---
 layout: default
 ---
-
-<div id="home">
-  <div class="posts">
-    <!-- This loops through the paginated posts -->
-    {% for post in paginator.posts %}
-    <div class="post">
-      <h1 class="title"><a href="{{ post.url }}">{{ post.title }}</a></h1>
-      <p class="author">
-        <p><span class="date">{{ post.date }}</span></p>
-        <span class="date">{{ post.date }}</span>
+<div class="posts">
+  {% for post in paginator.posts %}
+  <div class="post">
+    <div class="post-header">
+      <a href="{{ post.url }}" class="title">{{ post.title }}</a>
+      <p>
+        by <span class="author">{{ post.author }}</span>
+        <span class="date">{{ post.date | date_to_string }}</span>
       </p>
-      <div class="content">
-        {{ post.content }}
-      </div>
     </div>
-    {% endfor %}
+    <div class="post-content">
+      {{ post.content }}
+    </div>
   </div>
-  
-  <!-- Pagination links -->
-  {% if paginator.total_pages > 1 %}
-    <div class="pagination">
-      {% if paginator.previous_page %}
-        <a href="/page{{ paginator.previous_page }}" class="previous">Previous</a>
-      {% endif %}
+  {% endfor %}
+</div>
 
-      <span class="page_number ">Page: {{ paginator.page }} of {{ paginator.total_pages }}</span>
-
-      {% if paginator.next_page %}
-        <a href="/page{{ paginator.next_page }}" class="next">Next</a>
-      {% endif %}
-    </div>
+{% if paginator.total_pages > 1 %}
+<div class="pagination">
+  {% if paginator.previous_page %}
+    <a href="/page{{ paginator.previous_page }}" class="newer">Newer</a>
+  {% endif %}
+  <span class="page_number">Page: {{ paginator.page }} of {{ paginator.total_pages }}</span>
+  {% if paginator.next_page %}
+    <a href="/page{{ paginator.next_page }}" class="older">Older</a>
   {% endif %}
 </div>
+{% endif %}

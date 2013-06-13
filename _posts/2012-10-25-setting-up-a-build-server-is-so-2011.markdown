@@ -2,6 +2,7 @@
 layout: post
 title:  "Setting up a CI server is sooo 2011"
 date:   2012-10-25
+author: Badrinath Janakiraman
 categories: 
 ---
 

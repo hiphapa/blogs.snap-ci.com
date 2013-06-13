@@ -7,7 +7,7 @@ body {
   font-size: 18px;
   line-height: 1.8;
   color: #676767;
-  background-color: #F0F0F0;
+  background-color: rgba(190, 195, 190, 0.3);
 
   a {
     color: rgb(30, 80, 200);
@@ -20,18 +20,34 @@ body {
   
   .site {
     .header {
-      padding: 10px 0;
-      margin-bottom: 30px;
+      padding: 10px 10px 0 10px;
+      margin-bottom: 8px;
+      background-color: #FFF;
+      @include clearfix;
+      
+      .logo {
+        background: url('images/snap-logo-black.png') no-repeat 0 0;
+        float: left;
+        width: 200px;
+        height: 35px;
+        padding: 15px 0 0 165px;
+        font-family: MarydaleRegular;
+        font-size: 22px;
+        color: #ff5e3b;
+      }
       
       .blog-title {
+        float: left;
         font-size: 36px;
         text-align: center;
-        a { color: red; }
+        a { 
+          color: #ff5e3b;
+        }
       }
     }
     
     .content {
-      width: 840px;
+      width: 800px;
       margin: 0 auto 0 160px;
     }
     
@@ -93,9 +109,10 @@ body {
         
         .youtube-embed {
           padding: 10px;
-          padding-bottom: 4px;
+          padding-bottom: 10px;
           margin-top: 40px;
           background-color: rgba(82, 93, 116, 0.3);
+          @include clearfix;
         }
       }
     }
@@ -110,8 +127,12 @@ body {
     background-color: #64CBC3;
     width: 50%;
     
-    * {
+    a {
       color: inherit;
+      
+      &:visted {
+        color: #AAA;
+      };
     }
   }
 }

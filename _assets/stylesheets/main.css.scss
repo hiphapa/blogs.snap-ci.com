@@ -37,10 +37,12 @@ body {
       }
       
       .blog-title {
-        float: left;
+        float: right;
         font-size: 36px;
         text-align: center;
+        margin-right: 30px;
         a { 
+          font-family: Helvetica;
           color: #ff5e3b;
         }
       }

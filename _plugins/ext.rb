@@ -20,7 +20,8 @@ module JekyllAssetPipeline
       Compass.add_project_configuration({})
       Compass.configure_sass_plugin!
       Compass.configuration.add_import_path Pathname.new("./_assets/stylesheets").realpath
-      Compass.configuration.add_import_path Pathname.new("./_assets/fonts").realpath
+      Compass.configuration.add_import_path Pathname.new("./assets/fonts").realpath
+      Compass.configuration.add_import_path Pathname.new("./assets/images").realpath
       Compass.compiler.compile("./_assets/stylesheets/#{@asset.filename}", output.path)
       output.read
     end

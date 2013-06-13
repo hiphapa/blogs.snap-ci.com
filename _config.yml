@@ -1,5 +1,6 @@
-name: The Snap Blog
+name: the snap blogs here...
 pygments: true
-paginate: 5
+paginate: 3
 safe: false
-exclude: ['Gemfile', 'Gemfile.lock']
+exclude: ['Gemfile', 'Gemfile.lock', 'vendor']
+include: ['assets']

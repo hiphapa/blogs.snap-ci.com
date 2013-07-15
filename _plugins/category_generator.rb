@@ -35,40 +35,13 @@ module Jekyll
   class CategoryIndex < Page
     def initialize(site, base, category_dir, category)
       super(site, base, category_dir, 'index.html')
-      self.data['layout']      = 'category'
-      self.data['category']    = category
-      self.data['title']       = "All posts tagged: #{category}"
-      self.data['description'] = "Tagged: #{category}"
+      self.data['layout']          = 'category'
+      self.data['category']        = category
+      self.data['title']           = "All posts tagged: #{category}"
+      self.data['description']     = "Tagged: #{category}"
+      self.data['posts_to_render'] = site.categories[category]
     end
   end
-
-  # class Site
-  #   def write_category_index(category_dir, category)
-  #     index = category_index(category_dir, category)
-  #     index.render(self.layouts, site_payload)
-  #     index.write(self.dest)
-  #     self.pages << index
-  # 
-  #     Create an Atom-feed for each index.
-  #     feed = CategoryFeed.new(self, self.source, category_dir, category)
-  #     feed.render(self.layouts, site_payload)
-  #     feed.write(self.dest)
-  #     # Record the fact that this page has been added, otherwise Site::cleanup will remove it.
-  #     self.pages << feed
-  #   end
-  # 
-  #   def write_category_indexes
-  #     self.categories.keys.each do |category|
-  #       self.write_category_index(File.join('categories', category.to_url), category)
-  #     end
-  #   end
-  #   
-  #   private
-  #   def category_index(category_dir, category)
-  #     return CategoryIndex.new(self, self.source, category_dir, category)
-  #   end
-  # end
-
 
   class GenerateCategories < Generator
     safe true

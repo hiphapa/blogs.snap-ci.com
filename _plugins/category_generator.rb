@@ -38,7 +38,7 @@ module Jekyll
       self.data['layout']          = 'archive'
       self.data['category']        = category
       self.data['title']           = "All posts tagged: #{category}"
-      self.data['posts_to_render'] = site.categories[category]
+      self.data['posts_to_render'] = site.categories[category].sort_by { |post| - post.date.to_i }
     end
   end
 

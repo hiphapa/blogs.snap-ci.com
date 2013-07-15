@@ -6,7 +6,7 @@ module Jekyll
       super(site, base, dir, 'index.html')
       self.data['layout']      = 'archive'
       self.data['title']       = "Archive"
-      self.data['posts_to_render'] = site.posts
+      self.data['posts_to_render'] = site.posts.sort_by { |post| - post.date.to_i }
     end
   end
 

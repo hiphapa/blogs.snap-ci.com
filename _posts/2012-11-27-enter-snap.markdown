@@ -3,7 +3,7 @@ layout: post
 title:  "Enter Snap..."
 date:   2012-11-27
 author: Badrinath Janakiraman
-categories: 
+categories: announcements
 ---
 
 

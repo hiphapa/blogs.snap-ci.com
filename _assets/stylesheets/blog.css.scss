@@ -1,0 +1,89 @@
+@import 'compass';
+@import 'compass/reset';
+@import 'fonts.css.scss';
+
+.posts {
+  .post {
+    font-size: 12px;
+    
+    & ~ .post {
+      margin-top: 30px;
+    }
+
+    .post-header, .post-content {
+      padding: 5px 24px 10px 12px;
+    }
+
+    .post-header {
+      font-family: 'RobotoThin' Helvetica Arial 'sans serif';
+      background-color: #555;
+      @include border-radius(2px 2px 0 0);
+      
+      .title {
+        font-size: 24px;
+        color: #FFF;
+      }
+
+      p {
+        color: #EEE;
+        font-size: 11px;
+        
+        .author, .date {
+          display: inline-block;
+          margin-right: 20px;
+        }
+      }
+    }
+
+    .post-content {
+      padding-right: 0;
+      padding-left: 0;
+      background-color: #FFF;
+      @include border-radius(0 0 2px 2px);
+      
+      p {
+        padding: 10px 20px;
+      }
+      
+      .youtube-embed {
+        padding: 10px;
+        margin-top: 20px;
+        background-color: rgba(100, 100, 100, 0.7 );
+        @include clearfix;
+        
+        iframe {
+          display: block;
+          height: 360px;
+          width: 640px;
+          margin: 0 auto;
+        }
+      }
+    }
+  }
+}
+
+.pagination {
+  margin: 0 auto;
+  font-size: 14px;
+  text-align: center;
+  color: #FFF;
+  padding: 10px;
+  background-color: #555;
+  @include clearfix;
+
+  .archives {
+    display: block;
+    width: 60px;
+    margin: 0 auto;
+  }
+  
+  .older {
+    float: left;
+    margin-left: 10px;
+  }
+
+  .newer {
+    float: right;
+    margin-right: 10px;
+  }
+}

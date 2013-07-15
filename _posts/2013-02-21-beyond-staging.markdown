@@ -3,7 +3,7 @@ layout: post
 title:  "Beyond Staging"
 date:   2013-02-21
 author: Badrinath Janakiraman
-categories: 
+categories: deployments
 ---
 
 When you start out with your project, it would have been sufficient for you to push your application out to a single environment. You may have called it development or staging and deployed every build that passed your tests onto it. However, soon enough, as your application grows, there is typically a need for multiple environments between the first one and what you may call production. At the very least, you will need to have a staging and a production environment, if not more (UAT, QA?).

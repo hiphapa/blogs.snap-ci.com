@@ -3,7 +3,7 @@ layout: post
 title:  "Would you like a side of build with that branch?"
 date:   2013-02-21
 author: Badrinath Janakiraman
-categories: 
+categories: feature cloning
 ---
 
 It is a rare application that doesn't ever need a hot-fix to a deployed version. If to err is human, I prove I am human many times a day and sometimes, these get into production. Chances are, yours might too.

@@ -1,21 +1,22 @@
 @import 'compass';
 @import 'compass/reset';
 @import 'fonts.css.scss';
+@import 'blog.css.scss';
 @import 'category.css.scss';
 
 body {
   font-family: 'OpenSansLight' Helvetica Arial 'sans serif';
-  font-size: 16px;
+  font-size: 13px;
   line-height: 1.8;
   color: #676767;
   background-color: #EEE;
 
   a {
-    color: rgb(30, 80, 200);
+    color: #FFF;
     text-decoration: none;
-    
+
     &:visited {
-      color: rgb(100, 80, 200);
+      color: darken(#FFF, 10%);
     };
   }
   
@@ -57,25 +58,36 @@ body {
     
     #content {
       font-family: 'RobotoRegular' Helvetica Arial 'sans serif';
-      padding: 0 30px;
+      padding: 0 60px;
       @include clearfix;
       
       #main {
         float: left;
-        width: 70%;
+        width: 65%;
       }
 
       #sidebar {
-        float: left;
-        margin: 0 15px;
-        width: 25%;
-
-        padding: 0 15px;
-        background-color: darken(rgba(190, 195, 190, 0.3), 10%);
-
+        float: right;
+        width: 30%;
+        padding: 5px 15px;
+        background-color: #555;
+        font-family: 'RobotoThin' Helvetica Arial 'sans serif';
+        @include border-radius(2px);
+        
         h1 {
-          font-family: 'RobotoBold' Helvetica Arial 'sans serif';
-          font-size: 21px;
+          font-size: 24px;
+          color: #FFF;
+        }
+        
+        #recent_posts {
+          li {
+            margin: 10px 0;
+            
+            &:before {
+              content: '>';
+              color: #FFF;
+            };
+          }
         }
       }
     }
@@ -84,86 +96,4 @@ body {
       margin-top: 20px;
     }
   }  
-  
-  .posts {
-    background-color: #FFF;
-    padding: 30px 0 30px 30px;
-
-    .post {
-      font-size: 12px;
-      border-bottom: 2px solid #43B0A7;
-      padding-bottom: 30px;
-      
-      &:last-child {
-        border-bottom: none;
-      };
-      
-      & ~ .post {
-        margin-top: 30px;
-      }
-
-      .post-header, .post-content {
-        padding: 5px 24px 10px 12px;
-      }
-
-      .post-header {
-        font-family: 'RobotoThin' Helvetica Arial 'sans serif';
-        margin-bottom: 20px;
-        background-color: #64CBC3;
-        
-        .title {
-          font-size: 24px;
-          color: #FFF;
-        }
-
-        p {
-          color: #EEE;
-          font-size: 11px;
-          
-          .author, .date {
-            display: inline-block;
-            margin-right: 20px;
-          }
-        }
-      }
-
-      .post-content {
-        padding-right: 0;
-        padding-left: 0;
-        
-        p {
-          padding: 10px 20px;
-        }
-        
-        .youtube-embed {
-          padding: 10px;
-          padding-bottom: 10px;
-          margin-top: 40px;
-          background-color: rgba(82, 93, 116, 0.3);
-          @include clearfix;
-        }
-      }
-    }
-  }
-
-  .pagination {
-    margin: 30px auto;
-    font-size: 12px;
-    text-align: center;
-    color: #FFF;
-    padding: 10px;
-    background-color: #64CBC3;
-    width: 50%;
-    
-    .newer, .older, .page_number {
-      color: inherit;
-      display: inline-block;
-    }
-    
-    .page_number {
-      color: #DDD;
-      font-style: italic;
-      margin: 0 10px;
-    }
-  }
 }

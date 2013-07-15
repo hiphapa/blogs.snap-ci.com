@@ -7,7 +7,7 @@ layout: blog
       <a href="{{ page.url }}" class="title">{{ page.title }}</a>
       <p>
         by <span class="author">{{ page.author }}</span>
-        <span class="date">{{ post.date | date_to_string }}</span>
+        <span class="date">{{ page.date | date_to_string }}</span>
       </p>
       <p>{{ page.categories | category_links }}</p>
     </div>

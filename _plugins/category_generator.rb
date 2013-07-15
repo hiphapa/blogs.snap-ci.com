@@ -35,10 +35,9 @@ module Jekyll
   class CategoryIndex < Page
     def initialize(site, base, category_dir, category)
       super(site, base, category_dir, 'index.html')
-      self.data['layout']          = 'category'
+      self.data['layout']          = 'archive'
       self.data['category']        = category
       self.data['title']           = "All posts tagged: #{category}"
-      self.data['description']     = "Tagged: #{category}"
       self.data['posts_to_render'] = site.categories[category]
     end
   end

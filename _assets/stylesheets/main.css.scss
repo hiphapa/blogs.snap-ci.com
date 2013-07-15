@@ -14,10 +14,6 @@ body {
   a {
     color: #FFF;
     text-decoration: none;
-
-    &:visited {
-      color: darken(#FFF, 30%);
-    };
   }
   
   .site {

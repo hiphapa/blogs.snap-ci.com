@@ -5,6 +5,7 @@ layout: default
   <h1>{{ page.title }}</h1>
   <a href="/">Show all posts</a>
 </div>
+
 <div id="blog-archives" class="category">
 {% for post in page.posts_to_render %}
 {% capture this_year %}{{ post.date | date: "%Y" }}{% endcapture %}

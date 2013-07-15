@@ -1,6 +1,8 @@
 name: snappy blog title
 pygments: true
 paginate: 3
+recent_posts: 5
 safe: false
+permalink: /blog/:year/:month/:day/:title/
 exclude: ['Gemfile', 'Gemfile.lock', 'vendor']
 include: ['assets']

@@ -9,6 +9,7 @@ layout: default
         by <span class="author">{{ page.author }}</span>
         <span class="date">{{ page.date }}</span>
       </p>
+      <p>{{ page.categories | category_links }}</p>
     </div>
     <div class="post-content">
       {{ content }}

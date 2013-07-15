@@ -39,6 +39,7 @@ GEM
     saas (0.1.1)
     safe_yaml (0.7.1)
     sass (3.2.9)
+    stringex (2.0.3)
     syntax (1.0.0)
     yajl-ruby (1.1.0)
 
@@ -50,3 +51,4 @@ DEPENDENCIES
   jekyll
   jekyll-asset-pipeline
   saas
+  stringex

@@ -1,5 +1,5 @@
 ---
-layout: default
+layout: blog
 ---
 <div class="posts">
   {% for post in paginator.posts %}
@@ -10,6 +10,7 @@ layout: default
         by <span class="author">{{ post.author }}</span>
         <span class="date">{{ post.date | date_to_string }}</span>
       </p>
+      <p>{{ post.categories | category_links }}</p>
     </div>
     <div class="post-content">
       {{ post.content }}
@@ -27,8 +28,6 @@ layout: default
   {% if paginator.previous_page > 1 %}
     <a href="/{{ paginator.previous_page_path }}" class="newer">Newer</a>
   {% endif %}
-
-  <span class="page_number">Page: {{ paginator.page }} of {{ paginator.total_pages }}</span>
 
   {% if paginator.next_page %}
     <a href="/page{{ paginator.next_page }}" class="older">Older</a>

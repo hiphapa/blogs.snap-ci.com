@@ -6,14 +6,19 @@ layout: blog
   <div class="post">
     <div class="post-header">
       <a href="{{ post.url }}" class="title">{{ post.title }}</a>
-      <p>
-        by <span class="author">{{ post.author }}</span>
-        <span class="date">{{ post.date | date_to_string }}</span>
-      </p>
-      <p>{{ post.categories | category_links }}</p>
     </div>
     <div class="post-content">
       {{ post.content }}
+    </div>
+    <div class="post-footer">
+      <div class="metadata">
+        Posted by <span class="author">{{ post.author }}</span> on <span class="date">{{ post.date | date_to_string }}</span>. <span class="tags">Tagged: {{ post.categories | category_links }}</span>
+      </div>
+      <ul class="social-likes" data-url="{{ post.url }}" data-title="{{ post.title }}" data-counters="false">
+      	<li class="facebook" title="Share link on Facebook"></li>
+      	<li class="twitter" title="Share link on Twitter"></li>
+      	<li class="plusone" title="Share link on Google+"></li>
+      </ul> 
     </div>
   </div>
   {% endfor %}

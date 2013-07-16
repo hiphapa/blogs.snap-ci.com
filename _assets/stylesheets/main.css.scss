@@ -66,9 +66,10 @@ body {
         float: right;
         width: 30%;
         padding: 5px 15px;
-        background-color: #555;
+        background-color: rgba(231, 76, 60, 0.9);
         font-family: 'RobotoThin' Helvetica Arial 'sans serif';
         @include border-radius(2px);
+        @include box-shadow(0 1px 4px rgba(85, 85, 85, 0.3));
         
         h1 {
           color: #FFF;
@@ -78,7 +79,8 @@ body {
         
         #recent_posts {
           li {
-            margin: 12px 0;
+            margin: 4px 0;
+            padding: 6px 0;
             
             &:before {
               content: '>';

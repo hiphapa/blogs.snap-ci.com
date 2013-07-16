@@ -4,6 +4,7 @@
 
 .posts {
   .post {
+    @include box-shadow(0 1px 8px rgba(85, 85, 85, 0.3));
     
     & ~ .post {
       margin-top: 30px;

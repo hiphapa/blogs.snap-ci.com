@@ -71,16 +71,19 @@ body {
         @include border-radius(2px);
         
         h1 {
-          font-size: 24px;
           color: #FFF;
+          font-size: 30px;
+          margin-bottom: 10px;
         }
         
         #recent_posts {
           li {
-            margin: 10px 0;
+            margin: 12px 0;
             
             &:before {
               content: '>';
+              display: inline-block;
+              margin-right: 2px;
               color: #FFF;
             };
           }

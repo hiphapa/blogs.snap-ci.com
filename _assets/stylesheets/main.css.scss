@@ -70,26 +70,6 @@ body {
         font-family: 'RobotoThin' Helvetica Arial 'sans serif';
         @include border-radius(2px);
         @include box-shadow(0 1px 4px rgba(85, 85, 85, 0.3));
-        
-        h1 {
-          color: #FFF;
-          font-size: 32px;
-          line-height: 2.2;
-        }
-        
-        #recent_posts {
-          li {
-            margin: 4px 0;
-            padding: 6px 0;
-            
-            &:before {
-              content: '>';
-              display: inline-block;
-              margin-right: 2px;
-              color: #FFF;
-            };
-          }
-        }
       }
     }
    

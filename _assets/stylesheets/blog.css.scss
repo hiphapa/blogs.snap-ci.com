@@ -2,6 +2,67 @@
 @import 'compass/reset';
 @import 'fonts.css.scss';
 
+@mixin social-icon($icon-name, $color, $hover-color) {
+  font-family: "MonoSocial";
+  font-style: normal;
+  color: $color;
+  
+  @include transition-property(color);
+  @include transition-duration(0.3s);
+  @include transition-timing-function(ease);
+  
+  &:hover {
+    color: $hover-color;
+  };
+  
+  &:before {
+    content: $icon-name;
+    display: inline-block;
+    
+    -webkit-text-rendering: optimizeLegibility;
+       -moz-text-rendering: optimizeLegibility;
+        -ms-text-rendering: optimizeLegibility;
+         -o-text-rendering: optimizeLegibility;
+            text-rendering: optimizeLegibility;
+
+    -webkit-font-smoothing: antialiased;
+       -moz-font-smoothing: antialiased;
+        -ms-font-smoothing: antialiased;
+         -o-font-smoothing: antialiased;
+            font-smoothing: antialiased;
+    
+  };
+}
+
+#sidebar {
+  h1 {
+    color: #FFF;
+    font-size: 32px;
+    line-height: 2.2;
+    @include clearfix;
+    
+    .atom-feed {
+      float: right;
+      margin-right: 15px;
+      @include social-icon("circlerss", darken(rgba(231, 76, 60, 0.9), 10%), #FFF);
+    }
+  }
+  
+  #recent_posts {
+    li {
+      margin: 4px 0;
+      padding: 6px 0;
+      
+      &:before {
+        content: '>';
+        display: inline-block;
+        margin-right: 2px;
+        color: #FFF;
+      };
+    }
+  }
+}
+
 .posts {
   .post {
     @include box-shadow(0 1px 8px rgba(85, 85, 85, 0.3));
@@ -84,53 +145,20 @@
           margin: 0 5px;
           
           span[class*='button_facebook'], span[class*='button_twitter'], span[class*='button_plusone'] {
-            color: #999;
             font-size: 30px;
             line-height: 30px;
-            font-style: normal;
-            font-family: "MonoSocial";
-            
-            @include transition-property(color);
-            @include transition-duration(0.3s);
-            @include transition-timing-function(ease);
-            
-            &:hover {
-              color: #333;
-            };
-            
-            &:before {
-              display: inline-block;
-              
-              -webkit-text-rendering: optimizeLegibility;
-                 -moz-text-rendering: optimizeLegibility;
-                  -ms-text-rendering: optimizeLegibility;
-                   -o-text-rendering: optimizeLegibility;
-                      text-rendering: optimizeLegibility;
-
-              -webkit-font-smoothing: antialiased;
-                 -moz-font-smoothing: antialiased;
-                  -ms-font-smoothing: antialiased;
-                   -o-font-smoothing: antialiased;
-                      font-smoothing: antialiased;
-            };
           }
           
           span[class*='button_facebook'] {
-            &:before {
-              content: "circlefacebook";
-            }
+            @include social-icon("circlefacebook", #999, #333);
           }
 
           span[class*='button_twitter'] {
-            &:before {
-              content: "circletwitterbird";
-            }
+            @include social-icon("circletwitterbird", #999, #333);
           }
 
           span[class*='button_plusone'] {
-            &:before {
-              content: "circlegoogleplus";
-            }
+            @include social-icon("circlegoogleplus", #999, #333);
           }
 
           span[class*='counter'] {

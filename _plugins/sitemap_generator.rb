@@ -26,7 +26,7 @@ module Jekyll
     def emit_urlset(sitemap, site)
       sitemap.urlset(:xmlns => "http://www.sitemaps.org/schemas/sitemap/0.9") do |urlset|
         emit_root_url(urlset, site)
-        site.posts.each { |post| emit_post_url(urlset, post, site) }
+        sorted_posts(site).each { |post| emit_post_url(urlset, post, site) }
       end
     end
   
@@ -49,10 +49,6 @@ module Jekyll
     
     def sorted_posts(site)
       site.posts.sort_by { |post| - post.date.to_i }
-    end
-  
-    def latest_post(site)
-      sorted_posts(site).first
     end
   
     def absolute_url(site, post)

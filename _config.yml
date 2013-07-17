@@ -1,4 +1,5 @@
 name: snappy blog title
+url: http://blog.snap-ci.com
 pygments: true
 paginate: 3
 recent_posts: 5

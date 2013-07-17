@@ -5,5 +5,5 @@ paginate: 3
 recent_posts: 5
 safe: false
 permalink: /blog/:year/:month/:day/:title/
-exclude: ['Gemfile', 'Gemfile.lock', 'vendor']
+exclude: ['Gemfile', 'Gemfile.lock', 'vendor', 'README']
 include: ['assets']

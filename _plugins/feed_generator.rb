@@ -1,5 +1,3 @@
-require 'stringex'
-
 module Jekyll
   
   class FeedPage < Page

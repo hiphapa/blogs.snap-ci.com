@@ -67,6 +67,11 @@
   .post {
     @include box-shadow(0 1px 6px rgba(85, 85, 85, 0.3));
     
+    a {
+      color: #28F;
+      text-decoration: none;
+    }    
+    
     & ~ .post {
       margin-top: 30px;
     }
@@ -96,6 +101,28 @@
       
       p {
         padding: 10px 20px;
+      }
+      
+      img {
+        width: 600px;
+        margin: 0 auto;
+      }
+      
+      ul {
+        margin: 5px 20px;
+
+        li {
+          padding: 0 20px;
+          
+          &:before {
+            content: "\0BB \020";
+            display: inline-block;
+            font-family: 'RobotoBold';
+            font-size: 15px;
+            color: #333;
+            margin-right: 4px;
+          };
+        }
       }
       
       .youtube-embed {

@@ -2,3 +2,5 @@ _site
 sitemap.xml
 .sass-cache
 .DS_Store
+/bin/
+.bundle/

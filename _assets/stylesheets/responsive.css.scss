@@ -1,0 +1,173 @@
+@media only screen and (max-width : 1100px) {
+  body .site {
+    #content {
+      #sidebar {
+        display: none;
+      }
+
+      #main {
+        width: 100% !important; 
+      }
+    }
+  }
+}
+
+@media only screen and (max-width : 860px) {
+  body .site {
+    #header {
+      padding: 0 15px;
+      
+      .logo {
+        width: 140px;
+        height: 30px;
+        background-size: 120px 36px;
+        padding: 10px 0 0 125px;
+        font-size: 16px;
+      }
+      
+      .header-actions {
+        .login {
+          display: none;
+        }
+
+        .docs, .blogs {
+          font-size: 15px;
+          margin-left: 8px;
+          padding: 8px;
+        }
+      }
+    }
+    
+    #content {
+      padding: 0 15px;
+    }
+  }
+}
+
+@media only screen and (max-width : 680px) {
+  body .site {
+    #header {
+      padding: 10px 10px 5px 15px;
+      margin-bottom: 6px;
+      
+      .logo {
+        background-size: 100px 30px;
+        padding: 6px 0 0 105px;
+      }
+      
+      .header-actions {
+        .docs, .blogs {
+          font-size: 12px;
+        }
+      }
+    }
+    
+    #content {
+      padding: 0 10px;
+    }
+  }
+
+  .posts {
+    font-size: 11px;
+
+    .post {
+      & ~ .post {
+        margin-top: 15px;
+      }
+      
+      .youtube-embed {
+        padding: 2px;
+        margin-top: 10px;
+        background-color: rgba(100, 100, 100, 0.7 );
+        
+        iframe {
+          display: block;
+          width: 100%;
+        }
+      }
+      
+      .post-header {
+        a {
+          font-size: 24px !important;
+        }
+      }
+
+      .post-footer {
+        padding: 2px 10px;
+
+        .metadata {
+          line-height: 24px;
+          font-size: 11px;
+          margin-right: 0px;
+        }
+
+        .social-likes {
+          li {
+            margin: 0 3px;
+
+            span[class*='button_facebook'], span[class*='button_twitter'], span[class*='button_plusone'] {
+              font-size: 20px;
+              line-height: 20px;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+@media only screen and (max-width : 480px) {
+  body .site {
+    #header {
+      padding: 10px 10px 5px 10px;
+      margin-bottom: 4px;
+      @include clearfix;
+      
+      .logo {
+        width: 100px;
+        height: 20px;
+        background-size: 70px 20px;
+        padding: 4px 0 0 75px;
+        font-size: 10px;
+      }
+      
+      .header-actions {
+        .docs, .blogs{
+          font-size: 10px;
+          margin-left: 4px;
+          padding: 0;
+        }
+      }
+    }
+  }
+  
+  .posts {
+    .post {
+      .post-header {
+        a {
+          font-family: RobotoLight;
+          font-size: 14px !important;
+        }
+      }
+
+      .post-footer {
+        padding: 2px 10px;
+
+        .metadata {
+          line-height: 10px;
+          font-size: 6px;
+          margin-right: 30px;
+        }
+
+        .social-likes {
+          li {
+            span[class*='button_facebook'], span[class*='button_twitter'], span[class*='button_plusone'] {
+              font-size: 11px;
+              line-height: 12px;
+            }
+          }
+        }
+      }
+    }
+  }
+}

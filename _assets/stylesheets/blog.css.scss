@@ -94,17 +94,16 @@
     }
 
     .post-content {
-      padding-right: 0;
-      padding-left: 0;
+      padding: 0 20px;
       background-color: #FFF;
       @include border-radius(0 0 2px 2px);
       
       p {
-        padding: 10px 20px;
+        padding: 10px 0;
       }
       
-      img {
-        width: 600px;
+      .screenshot {
+        width: 100%;
         margin: 0 auto;
       }
       

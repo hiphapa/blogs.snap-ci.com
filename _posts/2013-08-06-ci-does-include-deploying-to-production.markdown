@@ -19,4 +19,4 @@ The key benefits of automating deployments and having them modelled as stages in
 
 The following image shows the recent deployment history for the Snap [documentation site](http://docs.snap-ci.com). The first stage generates the website using Jekyll and the subsequent stages which deploy to staging and production sync it to an S3 bucket. And yes, this does mean that deployments in Snap are not limited to just Heroku! That's a different blog post for another day, though. :)
 
-<img src="/assets/images/screenshots/deployment-history@2x.png" />
+<img src="/assets/images/screenshots/deployment-history@2x.png" class="screenshot"/>

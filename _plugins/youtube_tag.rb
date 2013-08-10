@@ -15,7 +15,7 @@ class YouTube < Liquid::Tag
   def render(context)
     <<-OUTPUT
 <div class="youtube-embed">
-<iframe width="#{@width}" height="#{@height}" src="http://www.youtube.com/embed/#{@id}?theme=light&amp;autohide=1&amp;modestbranding=1&amp;fs=1&amp;rel=0&amp;showinfo=0&amp;color=white&amp;vq=hd720" frameborder="0">
+<iframe src="http://www.youtube.com/embed/#{@id}?theme=light&amp;autohide=1&amp;modestbranding=1&amp;fs=1&amp;rel=0&amp;showinfo=0&amp;color=white&amp;vq=hd720" frameborder="0">
 </iframe>
 </div>
     OUTPUT

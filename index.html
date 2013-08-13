@@ -14,11 +14,11 @@ layout: blog
       <div class="metadata">
         Posted by <span class="author">{{ post.author }}</span> on <span class="date">{{ post.date | date_to_string }}</span>. <span class="tags">Tagged: {{ post.categories | category_links }}</span>
       </div>
-      <ul class="social-likes" data-url="{{ post.url }}" data-title="{{ post.title }}" data-counters="false">
+      <ul class="social-likes" data-url="{{site.url}}{{ post.url }}" data-title="{{ post.title }}" data-counters="false">
       	<li class="facebook" title="Share link on Facebook"></li>
       	<li class="twitter" title="Share link on Twitter"></li>
       	<li class="plusone" title="Share link on Google+"></li>
-      </ul> 
+      </ul>
     </div>
   </div>
   {% endfor %}
@@ -37,7 +37,7 @@ layout: blog
   {% if paginator.next_page %}
     <a href="/page{{ paginator.next_page }}" class="older">Older</a>
   {% endif %}
-  
-  <a href="/archives" class="archives">Archives</a>  
+
+  <a href="/archives" class="archives">Archives</a>
 </div>
 {% endif %}

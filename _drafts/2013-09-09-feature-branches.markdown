@@ -6,7 +6,7 @@ author: Akshay Karle
 categories: Integration-branches Feature-branches Clones
 ---
 
-When you are doing feature or user story branching you would create a branch for every feature or story you work on. These branches are then merged into the master branch once the feature is ready for release. When you merge your feature branch into master others working on different branches may have merge conflicts if they are touching the same piece of code. To avoid these conflicts an approach as suggested in Martin Fowler's [Feature branching](http://martinfowler.com/bliki/FeatureBranch.html) blog is to continuously merge your branch into master. However, you may want to ensure that your merge doesn't break any functionality on your master branch.
+[Feature branching](http://martinfowler.com/bliki/FeatureBranch.html) has been around for a while now. One of the major problems of feature branching is that merging your branch frequently and with small changes is difficult as you need some sort of feedback of whether your branch is good to merge into master.
 
 Snap can help you in this. Snap allows creation of clones that can also integrate with a specific branch. What this means is that, Snap performs a merge of your tracking branch with the integration branch and run a build with the merged code.
 

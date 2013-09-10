@@ -6,8 +6,6 @@ author: Akshay Karle
 categories: heroku heroku-oauth
 ---
 
-With the launch of [Heroku Oauth](https://blog.heroku.com/archives/2013/7/22/oauth-for-platform-api-in-public-beta), deploying to heroku from Snap has become even more seamless. No longer do you require to remember your [api key](https://devcenter.heroku.com/articles/platform-api-quickstart#authentication)!
+Snap in collaboration with Heroku has now started using [OAuth for Heroku](https://blog.heroku.com/archives/2013/7/22/oauth-for-platform-api-in-public-beta) for [setting up deployments](http://docs.snap-ci.com/deployments/heroku_deployments). Using Heroku OAuth makes Snap a single point of contact for deploying your code to an existing app on heroku or even creating a new app for deployments.
 
-When setting up your first deployment you just have to login to heroku to authorise Snap. Once Snap is set-up with your heroku account, you can create further deployments on any project with signing into heroku again or copying over the api key.
-
-One of the limitations we currently have is that every Snap user can have only one heroku account associated with him, so if you try to try to deploy to different accounts on heroku it won't work.
+Using OAuth means that you no longer need to copy over the API key from Heroku. Authorize Snap on Heroku once and Snap takes care of the rest of the deployments.

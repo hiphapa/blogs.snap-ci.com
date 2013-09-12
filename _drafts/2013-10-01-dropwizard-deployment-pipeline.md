@@ -16,7 +16,7 @@ For the purpose of this blog I have created a sample Dropwizard service, appropr
 
 When you setup this repository in Snap for the first time, it will detect that it's a Maven project and create a single stage pipeline for you with an empty `mvn` command. Simply replace `mvn` with `mvn package` to run the unit tests and create a deployable microblog jar.
 
-We're almost done with our first stage. Only exporting the build artifacts remain. See the documentation on [configuring and downloading artifacts]({{ site.docs }}artifacts/build_artifacts/#configuring-and-downloading-artifacts) for information on how to do this and why it's important. You'll want the `target` directory as an artifact for subsequent stages.
+We're almost done with our first stage. Only exporting the build artifacts remain. See the documentation on [configuring and downloading artifacts]({{ site.link.docs }}artifacts/build_artifacts/#configuring-and-downloading-artifacts) for information on how to do this and why it's important. You'll want the `target` directory as an artifact for subsequent stages.
 
 The stage task list should look like this
 
@@ -64,7 +64,7 @@ Your integration stage should look something like this
 
 Deploying to Heroku is the easiest part. First we need to ensure is that the `web` task in the [Procfile](https://devcenter.heroku.com/articles/procfile) runs our database migrations and starts up Jetty. Check out the Procfile in [dropwizard-snapci-sample](https://github.com/sahilm/dropwizard-snapci-sample) if you're interested in how it's done.
 
-With the right Procfile we're ready to roll. Just add a new Heroku deployment stage and Snap takes care of the rest. If you need any help you can head over to the [Heroku deployments]({{ site.docs }}deployments/heroku_deployments/) section in our documentation.
+With the right Procfile we're ready to roll. Just add a new Heroku deployment stage and Snap takes care of the rest. If you need any help you can head over to the [Heroku deployments]({{ site.link.docs }}deployments/heroku_deployments/) section in our documentation.
 
 Your Heroku deployment stage should look something like this
 

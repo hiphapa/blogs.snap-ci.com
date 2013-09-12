@@ -1,7 +1,7 @@
 ---
 layout: post
 title:  Announcing support for NoSQL datastores!
-date:   2013-09-07
+date:   2013-09-12
 author: Ketan Padegaonkar
 categories: announcements features
 ---

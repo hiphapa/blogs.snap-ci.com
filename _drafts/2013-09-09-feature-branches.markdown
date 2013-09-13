@@ -1,12 +1,12 @@
 ---
 layout: post
-title:  "Leveraging Snap for feature branching"
+title:  "Snap & short lived feature branches"
 date:   2013-09-09
 author: Akshay Karle
 categories: Integration-branches Feature-branches Clones
 ---
 
-With VCS like git, working with [branches](http://git-scm.com/book/en/Git-Branching-Basic-Branching-and-Merging) has become fairly straight-forward. Techniques such as [Feature branching](http://martinfowler.com/bliki/FeatureBranch.html) are now being practiced. One of the major problems of feature branching is that merging your branch frequently and with small changes is difficult as you need some sort of feedback of whether your branch is good to merge into master.
+With a VCS like git, working with [branches](http://git-scm.com/book/en/Git-Branching-Basic-Branching-and-Merging) is fairly straight-forward. Techniques such as [Feature branching](http://martinfowler.com/bliki/FeatureBranch.html) are now being practiced. One of the major problems of feature branching is that merging your branch frequently and with small changes is difficult as you need some sort of feedback of whether your branch is good to merge into master.
 
 Snap tries to help you overcome this problem. Snap allows creation of clones of a build that can also integrate with a specific branch. What this means is that, Snap performs a merge of your integration branch with the tracking branch and runs a build with the merged code.
 

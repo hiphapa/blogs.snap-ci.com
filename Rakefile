@@ -1,19 +1,13 @@
 #!/usr/bin/env rake -f
 require 'yaml'
 
-desc "generate jekyll configuration"
-task :generate_config do
-  config = YAML.load(File.open('_config_default.yml')).merge(load_environment_config(ENV['ENVIRONMENT']))
-  File.open('_config.yml', 'w') { |f| f.write(config.to_yaml) }
-end
-
 desc "build all blogs"
-task :build => [:generate_config] do
-  sh("bundle exec jekyll build")
+task :build do
+  sh("bundle exec jekyll build --config #{config_file_path}")
 end
 
 desc "deploy the blogs"
-task :deploy => [:generate_config] do
+task :deploy => [:build] do
 
   sh("curl --location http://sourceforge.net/projects/s3tools/files/s3cmd/1.0.1/s3cmd-1.0.1.tar.gz 2>/dev/null | tar -zxf -")
   File.open('s3.cfg', 'w') do |f|
@@ -26,8 +20,9 @@ task :deploy => [:generate_config] do
 end
 
 private
-def load_environment_config(env)
+def config_file_path
+  env = ENV['ENVIRONMENT']
   error_message = 'Please set environment variable ENVIRONMENT=STAGING or PRODUCTION'
   raise error_message if env.nil? || !%w(STAGING PRODUCTION).include?(env.upcase)
-  YAML.load(File.open("_config_#{env.downcase}.yml"))
+  "_config_#{env.downcase}.yml"
 end

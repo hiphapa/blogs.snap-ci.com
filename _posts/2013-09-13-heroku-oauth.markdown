@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  "Setting up heroku deployments has never been so easy"
+title:  "Simplify setting up Heroku deployments with OAuth"
 date:   2013-09-13
 author: Akshay Karle
 categories: heroku oauth deployments

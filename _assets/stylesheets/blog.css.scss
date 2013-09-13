@@ -83,13 +83,14 @@
     .post-header {
       font-family: 'RobotoThin' Helvetica Arial 'sans serif';
       background-color: #555;
+      padding: 12px;
       @include border-radius(2px 2px 0 0);
-
+      
       .title {
         font-size: 32px;
         display: block;
         color: #FFF;
-        line-height: 2.2;
+        line-height: 1.5;
       }
     }
 

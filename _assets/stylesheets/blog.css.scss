@@ -99,8 +99,32 @@
       background-color: #FFF;
       @include border-radius(0 0 2px 2px);
       
+      h2 {
+        font-family: 'RobotoMedium';
+        font-size: 13px;
+        margin: 25px 0 0;
+        color: #333;
+      }
+      
       p {
         padding: 10px 0;
+      }
+      
+      code {
+        font-family: Monaco, Consolas, Inconsolata, "Liberation Mono", "Courier New", monospace;
+        font-size: 11px;
+        display: inline-block;
+        background-color: #444;
+        padding: 0 4px;
+        color: white;
+        line-height: 1.8;
+        @include border-radius(3px);
+      }
+      
+      pre code {
+        padding: 10px;
+        width: 90%;
+        overflow: auto;
       }
       
       .screenshot {

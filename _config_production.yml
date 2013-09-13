@@ -8,5 +8,5 @@ permalink: /blog/:year/:month/:day/:title/
 exclude: ['Gemfile', 'Gemfile.lock', 'vendor', 'README']
 include: ['assets']
 link:
-  docs: https://docs.snap-ci.com/
+  docs: http://docs.snap-ci.com/
   contact_us: https://snap-ci.com/contact-us/

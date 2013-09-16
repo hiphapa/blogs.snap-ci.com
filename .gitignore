@@ -3,3 +3,4 @@ _site
 bin
 .bundle
 .sass-cache
+sitemap.xml

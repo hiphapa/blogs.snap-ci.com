@@ -10,7 +10,7 @@ categories: java deployments
 
 ## Meet the sample Dropwizard service
 
-For the purpose of this post I have created a sample Dropwizard service called [dropwizard-snapci-sample](https://github.com/sahilm/dropwizard-snapci-sample). It's a simple microblogging service API with two resources, User and MicroBlog. It speaks to PostgreSQL using the light [jdbi](http://jdbi.org/) library with [Liquibase](http://www.liquibase.org/) database migrations. The sample service is testing using both unit tests and end to end integration tests. 
+For the purpose of this post I have created a sample Dropwizard service called [dropwizard-snapci-sample](https://github.com/sahilm/dropwizard-snapci-sample). It's a simple microblogging service API with two resources, User and MicroBlog. It speaks to PostgreSQL using the light [jdbi](http://jdbi.org/) library with [Liquibase](http://www.liquibase.org/) database migrations. The sample service is testing using both unit tests and end to end integration tests.
 
 To get started, fork this repository to your GitHub account.
 
@@ -72,4 +72,4 @@ Your Heroku deployment stage should look something like this
 
 <img src="/assets/images/screenshots/dropwizard/heroku-stage.png" class="screenshot"/>
 
-That's all there is to it. Snap will now monitor your repository and run builds for all commits. Snap has a lot more to offer from CCTray, HipChat and Campfire build notifications to manual gated deployments to production environments. Also, we're just getting warmed up. If there's a feature you'd like to see or if you just want to say hi send us an email at <a href="mailto:snap-ci@thoughtworks.com">snap-ci@thoughtworks.com</a>.
+That's all there is to it. Snap will now monitor your repository and run builds for all commits. Snap has a lot more to offer from CCTray, HipChat and Campfire build notifications to manual gated deployments to production environments. Also, we're just getting warmed up. If there's a feature you'd like to see or if you just want to say hi feel free to [contact us]({{ site.link.contact_us }}).

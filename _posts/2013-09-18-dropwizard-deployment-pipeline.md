@@ -1,7 +1,7 @@
 ---
 layout: post
 title:  "Building a Dropwizard project"
-date:   2013-10-01
+date:   2013-09-18
 author: Sahil Muthoo
 categories: java deployments
 ---

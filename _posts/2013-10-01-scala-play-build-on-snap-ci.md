@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  "Hack Scala/Play build on Snap CI"
+title:  "Hack a Scala/Play build on Snap CI"
 date:   2013-10-01
 author: Shishir Das
 categories: java scala play deployments

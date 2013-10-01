@@ -1,7 +1,7 @@
 ---
 layout: post
 title:  "Hack Scala/Play build on Snap CI"
-date:   2013-09-18
+date:   2013-10-01
 author: Shishir Das
 categories: java scala play deployments
 ---
@@ -16,6 +16,10 @@ If you have your own project on GitHub you can use that. You would need to add s
 {% endhighlight %}
 
 For those you don't have a scala/play project you can follow the following instructions.
+
+##NB: Tricking Snap into believing you are running a Java project
+Since Scala is not yet a language which has first class support- by our original definition, you can trick Snap into thinking that it is working with a Java project by adding an empty pom.xml or build.xml file to your project root. Now, with the tricking behind us, we can proceed to run our sbt build as follows.
+
 
 ##Project Set Up.
 

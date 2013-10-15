@@ -69,6 +69,8 @@ aws elasticbeanstalk create-application-version --application-name "APP_NAME" --
 aws elasticbeanstalk update-environment --environment-name "ENVIRONMENT_NAME" --version-label `git rev-parse --short HEAD`
 {% endhighlight %}
 
+Note that we first delete any existing application versions with the same version label before creating a new application version with that label. This is done to ensure that you deploy the current build and not any previous versions.
+
 Next click on the Environment Variables tab and add the following environment variables:
 
 * Key: AWS_ACCESS_KEY_ID      Value: YOUR_AWS_ACCESS_KEY_ID

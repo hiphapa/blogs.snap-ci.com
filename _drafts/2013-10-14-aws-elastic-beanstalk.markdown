@@ -57,16 +57,16 @@ cd zip30 && make -f unix/Makefile generic_gcc
 cd zip30 && make prefix=$HOME -f unix/Makefile install
 {% endhighlight %}
 
-Now click Save to create the InstallZip stage.
+Now click Add to create the InstallZip stage.
 
 Next click on ADD NEW and select Custom stage again to add a another stage. Enter *Deploy* as the stage name and enter the following commands:
 
 {% highlight bash %}
-$HOME/bin/zip -r "railways.zip" *
-aws elasticbeanstalk delete-application-version --application-name "railways" --version-label `git rev-parse --short HEAD` --delete-source-bundle
-aws s3 cp railways.zip s3://railways.snap-ci.com/railways-`git rev-parse --short HEAD`.zip
-aws elasticbeanstalk create-application-version --application-name "railways" --version-label `git rev-parse --short HEAD` --source-bundle S3Bucket="railways.snap-ci.com",S3Key="railways-`git rev-parse --short HEAD`.zip"
-aws elasticbeanstalk update-environment --environment-name "railway-engine" --version-label `git rev-parse --short HEAD`
+$HOME/bin/zip -r "APP_NAME.zip" *
+aws elasticbeanstalk delete-application-version --application-name "APP_NAME" --version-label `git rev-parse --short HEAD` --delete-source-bundle
+aws s3 cp APP_NAME.zip s3://S3_BUCKET_NAME/APP_NAME-`git rev-parse --short HEAD`.zip
+aws elasticbeanstalk create-application-version --application-name "APP_NAME" --version-label `git rev-parse --short HEAD` --source-bundle S3Bucket="S3_BUCKET_NAME",S3Key="APP_NAME-`git rev-parse --short HEAD`.zip"
+aws elasticbeanstalk update-environment --environment-name "ENVIRONMENT_NAME" --version-label `git rev-parse --short HEAD`
 {% endhighlight %}
 
 Next click on the Environment Variables tab and add the following environment variables:
@@ -75,7 +75,7 @@ Next click on the Environment Variables tab and add the following environment va
 * Key: AWS_SECRET_ACCESS_KEY  Value: YOUR_AWS_SECRET_ACCESS_KEY
 * Key: AWS_DEFAULT_REGION     Value: YOUR_AWS_DEFAULT_REGION(set this to us-east-1 if you did not change it when setting up the application)
 
-Click Save to create the Deploy stage.
+Click Add to create the Deploy stage.
 Now, click Save and Re-run and wait for the pipeline to go complete and voila, you can now view your elastic beanstalk dashboard to see the status of your newly deployed application.
 
 ![elastic beanstalk dashboard](/assets/images/screenshots/aws-elastic-beanstalk/elastic-beanstalk-dashboard.png){: .screenshot}

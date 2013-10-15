@@ -69,6 +69,12 @@ aws elasticbeanstalk create-application-version --application-name "railways" --
 aws elasticbeanstalk update-environment --environment-name "railway-engine" --version-label `git rev-parse --short HEAD`
 {% endhighlight %}
 
+Next click on the Environment Variables tab and add the following environment variables:
+
+* Key: AWS_ACCESS_KEY_ID      Value: YOUR_AWS_ACCESS_KEY_ID
+* Key: AWS_SECRET_ACCESS_KEY  Value: YOUR_AWS_SECRET_ACCESS_KEY
+* Key: AWS_DEFAULT_REGION     Value: YOUR_AWS_DEFAULT_REGION(set this to us-east-1 if you did not change it when setting up the application)
+
 Click Save to create the Deploy stage.
 Now, click Save and Re-run and wait for the pipeline to go complete and voila, you can now view your elastic beanstalk dashboard to see the status of your newly deployed application.
 

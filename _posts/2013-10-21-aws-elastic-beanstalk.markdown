@@ -66,8 +66,6 @@ aws elasticbeanstalk create-application-version --application-name "APP_NAME" --
 aws elasticbeanstalk update-environment --environment-name "ENVIRONMENT_NAME" --version-label `git rev-parse --short HEAD`
 {% endhighlight %}
 
-There are a couple of things here that may not be clear as to why they are being done. For example, we perform a git checkout as the first step before zipping the application. This is done because Snap symlinks its own database.yml for Rails builds and if you deploy using that database.yml your application will fail as it doesn't have a production group. Next thing you might have noticed is that we first delete any existing application versions with the same version label before creating a new application version with that label. This is done to ensure that you deploy the current build and not any previous versions.
-
 Next click on the Environment Variables tab and add the following [environment variables required by AWS CLI](http://docs.aws.amazon.com/cli/latest/userguide/cli-chap-getting-started.html#config-settings-and-precedence):
 
 * Key: AWS_ACCESS_KEY_ID      Value: YOUR_AWS_ACCESS_KEY_ID
@@ -76,7 +74,11 @@ Next click on the Environment Variables tab and add the following [environment v
 
 Click Add to create the Deploy stage.
 
-Now, click Save and Re-run, wait for the pipeline to complete and voila! You can now view your [Elastic Beanstalk dashboard](https://console.aws.amazon.com/elasticbeanstalk/home) to see the status of your newly deployed application.
+Now, there are a couple of things here that may not be clear as to why they are being done. For example, we perform a git checkout as the first step before zipping the application. This is done because Snap symlinks its own database.yml for Rails builds. If you deploy using that database.yml your application will fail as we don't define a production configuration in the one that we create for you. 
+
+Next thing you might have noticed is that we first delete any existing application versions with the same version label before creating a new application version with that label. This is done to ensure that you deploy the current build and not any previous versions.
+
+Now that you have the Deploy stage added to your pipeline, click the Save and Re-run button. Wait for the pipeline to complete and voila! You can now view your [Elastic Beanstalk dashboard](https://console.aws.amazon.com/elasticbeanstalk/home) to see the status of your newly deployed application.
 
 ![elastic beanstalk dashboard](/assets/images/screenshots/aws-elastic-beanstalk/elastic-beanstalk-dashboard.png){: .screenshot}
 

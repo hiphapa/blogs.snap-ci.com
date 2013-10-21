@@ -74,9 +74,13 @@ Next click on the Environment Variables tab and add the following [environment v
 
 Click Add to create the Deploy stage.
 
-Now, there are a couple of things here that may not be clear as to why they are being done. For example, we perform a git checkout as the first step before zipping the application. This is done because Snap symlinks its own database.yml for Rails builds. If you deploy using that database.yml your application will fail as we don't define a production configuration in the one that we create for you. 
+Now, there may be a couple of things here that may not be immediately obvious. For example, we perform a git checkout as the first step before zipping the application. This is done because Snap symlinks its own database.yml for Rails builds. If you deploy using that database.yml your application will fail as we don't define a production configuration in the one that we create for you. The git checkout resets your working directory on the build box.
 
-Next thing you might have noticed is that we first delete any existing application versions with the same version label before creating a new application version with that label. This is done to ensure that you deploy the current build and not any previous versions.
+Once this is done, we create an application archive.
+
+The next thing you might notice is that we first delete any existing application versions with the same version label before creating a new application version with that label. This is done to ensure that you deploy the current build and not any previous versions.
+
+Finally, the application archive's contents are used to update the new version of the application.
 
 Now that you have the Deploy stage added to your pipeline, click the Save and Re-run button. Wait for the pipeline to complete and voila! You can now view your [Elastic Beanstalk dashboard](https://console.aws.amazon.com/elasticbeanstalk/home) to see the status of your newly deployed application.
 

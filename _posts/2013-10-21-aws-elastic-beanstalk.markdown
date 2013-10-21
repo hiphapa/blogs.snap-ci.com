@@ -6,7 +6,7 @@ author: Akshay Karle
 categories: AWS Elastic-Beanstalk Deployments
 ---
 
-Snap now has the [AWS CLI](http://aws.amazon.com/cli/) installed on all build boxes. This allows you to perform a number of aws operations including deploying to AWS using [Amazon's Elastic Beanstalk](http://aws.amazon.com/elasticbeanstalk/).
+Snap now has the [AWS CLI](http://aws.amazon.com/cli/) installed on all build boxes. This allows you to perform a number of AWS operations including deploying to AWS using [Amazon's Elastic Beanstalk](http://aws.amazon.com/elasticbeanstalk/).
 
 To deploy to AWS using Elastic Beanstalk you need to perform the following steps:
 * Create an Elastic Beanstalk application.
@@ -44,12 +44,12 @@ We also need to create a [S3 bucket](https://console.aws.amazon.com/s3/home) whe
 
 ## Deploy your app from Snap
 
-Once you've created a application and an environment using Elastic Beanstalk and created a S3 bucket to store the application versions, you can now proceed to configuring your project on Snap to start deploying to AWS. To deploy to AWS we will be adding a stage named *Deploy* to your build pipeline that does the following:
+Once you've created a application and an environment using Elastic Beanstalk and created a S3 bucket to store the application versions, you can configure your project on Snap to start deploying to AWS. To deploy to AWS we will be adding a stage named *Deploy* to your build pipeline that does the following:
 
 * Create a zip file of your current build
 * Upload the zip file to a S3 bucket for deployment
 * Create a new application version to deploy
-* Update the environment to use the application version
+* Update the environment to use the new application version
 
 To configure your project edit your build plan from the project configuration page as shown below:
 

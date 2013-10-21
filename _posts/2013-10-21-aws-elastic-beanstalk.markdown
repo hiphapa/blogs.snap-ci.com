@@ -1,7 +1,7 @@
 ---
 layout: post
 title:  "Deploying to AWS using Elastic Beanstalk"
-date:   2013-10-14
+date:   2013-10-21
 author: Akshay Karle
 categories: AWS Elastic-Beanstalk Deployments
 ---

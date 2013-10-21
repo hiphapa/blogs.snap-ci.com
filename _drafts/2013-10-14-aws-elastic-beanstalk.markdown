@@ -9,7 +9,7 @@ categories: AWS Elastic-Beanstalk Deployments
 Snap now has the [AWS CLI](http://aws.amazon.com/cli/) installed on all build boxes. This allows you to perform a number of aws operations including deploying to AWS using [Amazon's Elastic Beanstalk](http://aws.amazon.com/elasticbeanstalk/).
 
 To deploy to AWS using Elastic Beanstalk you need to perform the following steps:
-* Create an Elastic Beanstalk application to deploy.
+* Create an Elastic Beanstalk application.
 * Create an environment where you wish to deploy your application.
 * Create a S3 bucket where you can store your application to be deployed.
 * Create an application version to deploy.
@@ -20,6 +20,8 @@ In order to start using Snap for AWS deployments, we first need to setup an [Ela
 
 ![elastic beanstalk home](/assets/images/screenshots/aws-elastic-beanstalk/elastic-beanstalk-home.png){: .screenshot}
 
+Click on *Create New Application* to get started.
+
 ![create new application](/assets/images/screenshots/aws-elastic-beanstalk/application-info.png){: .screenshot}
 
 ![environment type](/assets/images/screenshots/aws-elastic-beanstalk/environment-type.png){: .screenshot}
@@ -28,13 +30,13 @@ In order to start using Snap for AWS deployments, we first need to setup an [Ela
 
 ![environment info](/assets/images/screenshots/aws-elastic-beanstalk/environment-info.png){: .screenshot}
 
+Please note that if your application uses [RDS](http://aws.amazon.com/rds/) you will have to create a RDS instance when creating your environment. You can view the steps for creating the RDS instance [here](http://docs.aws.amazon.com/elasticbeanstalk/latest/dg/create_deploy_Ruby.rds.html). If you are using any other databases please ensure that you have them installed and configured on the environments you are deploying to.
+
 ![additional resources](/assets/images/screenshots/aws-elastic-beanstalk/additional-resources.png){: .screenshot}
 
 ![configuration details](/assets/images/screenshots/aws-elastic-beanstalk/configuration-details.png){: .screenshot}
 
 ![review information](/assets/images/screenshots/aws-elastic-beanstalk/review-information.png){: .screenshot}
-
-Please note that if your application uses RDS you will have to create a RDS instance when creating your environment. You can view the steps for creating the RDS instance [here](http://docs.aws.amazon.com/elasticbeanstalk/latest/dg/create_deploy_Ruby.rds.html). If you are using any other databases please ensure that you have them installed and configured on the environments you are deploying to.
 
 We also need to create a [S3 bucket](https://console.aws.amazon.com/s3/home) where you can store your application versions to deploy:
 
@@ -42,38 +44,22 @@ We also need to create a [S3 bucket](https://console.aws.amazon.com/s3/home) whe
 
 ## Deploy your app from Snap
 
-Once you've created a application and an environment using Elastic Beanstalk and created a S3 bucket to store the application versions, you can now proceed to configuring your project on Snap to start deploying to AWS. To deploy to AWS we will be adding two stages to your build pipeline:
+Once you've created a application and an environment using Elastic Beanstalk and created a S3 bucket to store the application versions, you can now proceed to configuring your project on Snap to start deploying to AWS. To deploy to AWS we will be adding a stage named *Deploy* to your build pipeline that does the following:
 
-1. A InstallZip stage to:
-  * [Download zip source code and install zip](http://www.linuxfromscratch.org/blfs/view/svn/general/zip.html) on your build box
-  * This stage is required as the build boxes on Snap currently do not have zip installed on them.
-
-2. A Deploy stage to:
-  * Create a zip file of your current build
-  * Upload the zip file to a S3 bucket for deployment
-  * Create a new application version to deploy
-  * Update the environment to use the application version
+* Create a zip file of your current build
+* Upload the zip file to a S3 bucket for deployment
+* Create a new application version to deploy
+* Update the environment to use the application version
 
 To configure your project edit your build plan from the project configuration page as shown below:
 
 ![build plan edit](/assets/images/screenshots/aws-elastic-beanstalk/build-plan-edit.png){: .screenshot}
 
-Next click on ADD NEW and select Custom stage. Enter *InstallZip* as the stage name and enter the following commands:
-
-{% highlight bash %}
-wget ftp://ftp.info-zip.org/pub/infozip/src/zip30.tgz
-tar -zxf zip30.tgz
-cd zip30 && make -f unix/Makefile generic_gcc
-cd zip30 && make prefix=$HOME -f unix/Makefile install
-{% endhighlight %}
-
-Now click Add to create the InstallZip stage.
-
-Next click on ADD NEW and select Custom stage again to add a another stage. Enter *Deploy* as the stage name and enter the following commands:
+Next click on ADD NEW and select Custom stage. Enter *Deploy* as the stage name and enter the following commands:
 
 {% highlight bash %}
 git checkout .
-$HOME/bin/zip -r "APP_NAME.zip" * .*
+zip -r "APP_NAME.zip" * .*
 aws elasticbeanstalk delete-application-version --application-name "APP_NAME" --version-label `git rev-parse --short HEAD` --delete-source-bundle
 aws s3 cp APP_NAME.zip s3://S3_BUCKET_NAME/APP_NAME-`git rev-parse --short HEAD`.zip
 aws elasticbeanstalk create-application-version --application-name "APP_NAME" --version-label `git rev-parse --short HEAD` --source-bundle S3Bucket="S3_BUCKET_NAME",S3Key="APP_NAME-`git rev-parse --short HEAD`.zip"
@@ -90,7 +76,7 @@ Next click on the Environment Variables tab and add the following [environment v
 
 Click Add to create the Deploy stage.
 
-Now, click Save and Re-run, wait for the pipeline to complete and voila, you can now view your [Elastic Beanstalk dashboard](https://console.aws.amazon.com/elasticbeanstalk/home) to see the status of your newly deployed application.
+Now, click Save and Re-run, wait for the pipeline to complete and voila! You can now view your [Elastic Beanstalk dashboard](https://console.aws.amazon.com/elasticbeanstalk/home) to see the status of your newly deployed application.
 
 ![elastic beanstalk dashboard](/assets/images/screenshots/aws-elastic-beanstalk/elastic-beanstalk-dashboard.png){: .screenshot}
 

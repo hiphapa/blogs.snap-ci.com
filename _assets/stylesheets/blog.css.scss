@@ -36,36 +36,43 @@
 
 #sidebar {
   h1 {
-    color: #FFF;
+    color: #333;
     font-size: 32px;
     line-height: 2.2;
     @include clearfix;
     
     .atom-feed {
-      float: right;
-      margin-right: 15px;
-      @include social-icon("circlerss", darken(rgba(231, 76, 60, 0.9), 10%), #FFF);
+      margin-left: 20px;
+      @include social-icon("circlerss", darken(rgba(255, 255, 255, 0.7), 40%), darken(rgba(255, 255, 255, 0.7), 90%));
     }
   }
   
   #recent_posts {
+    font-size: 13px;
+    
     li {
-      margin: 4px 0;
-      padding: 6px 0;
-      
-      &:before {
-        content: '>';
+      padding: 10px 0;
+
+      a {
+        color: #333;
+      }
+
+      .title {
+        color: #555;
+        font-family: 'RobotoBold' Helvetica Arial 'sans serif';
         display: inline-block;
-        margin-right: 2px;
-        color: #FFF;
-      };
+        margin-bottom: 6px;
+                
+        .excerpt {
+          color: #777;
+        }
+      }
     }
   }
 }
 
 .posts {
   .post {
-    @include box-shadow(0 1px 6px rgba(85, 85, 85, 0.3));
     
     a {
       color: #28F;
@@ -73,7 +80,7 @@
     }    
     
     & ~ .post {
-      margin-top: 30px;
+      margin-top: 80px;
     }
 
     .post-header, .post-content {
@@ -81,28 +88,28 @@
     }
 
     .post-header {
-      font-family: 'RobotoThin' Helvetica Arial 'sans serif';
-      background-color: #555;
+      font-family: 'RobotoLight' Helvetica Arial 'sans serif';
+      background-color: #FFF;
+      border-bottom: 1px solid #DDD;
       padding: 12px;
       @include border-radius(2px 2px 0 0);
       
       .title {
         font-size: 32px;
         display: block;
-        color: #FFF;
+        color: #333;
         line-height: 1.5;
       }
     }
 
     .post-content {
       padding: 0 20px;
-      background-color: #FFF;
       @include border-radius(0 0 2px 2px);
       
       h2 {
         font-family: 'RobotoMedium';
         font-size: 13px;
-        margin: 25px 0 0;
+        margin-top: 40px;
         color: #333;
       }
       

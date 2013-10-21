@@ -1,8 +1,8 @@
 name: snappy blog title
 url: http://blog.snap-ci.com
 pygments: true
-paginate: 5
-recent_posts: 5
+paginate: 4
+recent_posts: 4
 safe: false
 permalink: /blog/:year/:month/:day/:title/
 exclude: ['Gemfile', 'Gemfile.lock', 'vendor', 'README']

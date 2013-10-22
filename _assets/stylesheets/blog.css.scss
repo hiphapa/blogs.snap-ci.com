@@ -84,14 +84,13 @@
     }
 
     .post-header, .post-content {
-      padding: 5px 24px 10px 12px;
+      padding: 20px 0 10px;
     }
 
     .post-header {
       font-family: 'RobotoLight' Helvetica Arial 'sans serif';
       background-color: #FFF;
       border-bottom: 1px solid #DDD;
-      padding: 12px;
       @include border-radius(2px 2px 0 0);
       
       .title {
@@ -103,7 +102,6 @@
     }
 
     .post-content {
-      padding: 0 20px;
       @include border-radius(0 0 2px 2px);
       
       h2 {
@@ -229,12 +227,10 @@
 }
 
 .pagination {
-  margin: 0 auto;
-  font-size: 14px;
+  margin: 80px auto 0;
+  font-size: 20px;
   text-align: center;
-  color: #FFF;
   padding: 10px;
-  background-color: #555;
   @include clearfix;
 
   .archives {

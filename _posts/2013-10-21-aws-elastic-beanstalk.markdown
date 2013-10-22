@@ -20,7 +20,7 @@ In order to start using Snap for AWS deployments, we first need to setup an [Ela
 
 ![elastic beanstalk home](/assets/images/screenshots/aws-elastic-beanstalk/elastic-beanstalk-home.png){: .screenshot}
 
-Click on *Create New Application* to get started.
+Click on *Create New Application* to get started and follow the sequence of steps below to set up an application.
 
 ![create new application](/assets/images/screenshots/aws-elastic-beanstalk/application-info.png){: .screenshot}
 
@@ -30,7 +30,7 @@ Click on *Create New Application* to get started.
 
 ![environment info](/assets/images/screenshots/aws-elastic-beanstalk/environment-info.png){: .screenshot}
 
-Please note that if your application uses [RDS](http://aws.amazon.com/rds/) you will have to create a RDS instance when creating your environment. You can view the steps for creating the RDS instance [here](http://docs.aws.amazon.com/elasticbeanstalk/latest/dg/create_deploy_Ruby.rds.html). If you are using any other databases please ensure that you have them installed and configured on the environments you are deploying to.
+Note that if your application uses [RDS](http://aws.amazon.com/rds/) you will have to create a RDS instance when creating your environment. You can view the steps for creating the RDS instance [here](http://docs.aws.amazon.com/elasticbeanstalk/latest/dg/create_deploy_Ruby.rds.html). If you are using any other databases please ensure that you have them installed and configured on the environments you are deploying to.
 
 ![additional resources](/assets/images/screenshots/aws-elastic-beanstalk/additional-resources.png){: .screenshot}
 
@@ -38,7 +38,7 @@ Please note that if your application uses [RDS](http://aws.amazon.com/rds/) you 
 
 ![review information](/assets/images/screenshots/aws-elastic-beanstalk/review-information.png){: .screenshot}
 
-We also need to create a [S3 bucket](https://console.aws.amazon.com/s3/home) where you can store your application versions to deploy:
+We will also need to create a [S3 bucket](https://console.aws.amazon.com/s3/home) where you can store your application versions to deploy:
 
 ![create s3 bucket](/assets/images/screenshots/aws-elastic-beanstalk/create-s3-bucket.png){: .screenshot}
 

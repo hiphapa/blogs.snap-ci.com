@@ -6,7 +6,7 @@ author: Badrinath Janakiraman
 categories: branching cloning integration
 ---
 
-It is fairly common practice to create short-lived branches in Git to support development of new features. While feature branches do [have](http://continuousdelivery.com/2011/07/on-dvcs-continuous-integration-and-feature-branches/) their [share]((http://martinfowler.com/bliki/FeatureBranch.html) of [problems](http://www.codinghorror.com/blog/2007/10/software-branching-and-parallel-universes.html), there are are also [well known patterns](http://nvie.com/posts/a-successful-git-branching-model/) to using branches, in a disciplined manner.
+It is fairly common practice to create short-lived branches in Git to support development of new features. While feature branches do [have](http://continuousdelivery.com/2011/07/on-dvcs-continuous-integration-and-feature-branches/) their [share](http://martinfowler.com/bliki/FeatureBranch.html) of [problems](http://www.codinghorror.com/blog/2007/10/software-branching-and-parallel-universes.html), there are are also [well known patterns](http://nvie.com/posts/a-successful-git-branching-model/) to using branches, in a disciplined manner.
 
 The key point to realize is that the problems associated from feature branches do not stem from the fact that work is done on a branch - but the fact the work is not continuously integrated into the branch designated as "mainline". The fact is while naming conventions, community accepted patterns and discipline can help ameliorate some of these problems, tool support for the discipline that mature developers have while using these conventions has been lacking.
 

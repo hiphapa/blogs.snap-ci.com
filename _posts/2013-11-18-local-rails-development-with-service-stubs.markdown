@@ -1,7 +1,7 @@
 ---
 layout: post
 title:  Local rails development with service stubs
-date:   2013-11-09
+date:   2013-11-18
 author: Ketan Padegaonkar
 categories: hacks ruby
 ---

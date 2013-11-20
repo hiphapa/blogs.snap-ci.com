@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  Local rails development with service stubs
+title:  Rails development with fake services
 date:   2013-11-18
 author: Ketan Padegaonkar
 categories: hacks ruby

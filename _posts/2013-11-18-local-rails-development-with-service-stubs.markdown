@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  Rails development with fake services
+title:  Rails development with service fakes
 date:   2013-11-18
 author: Ketan Padegaonkar
 categories: hacks ruby

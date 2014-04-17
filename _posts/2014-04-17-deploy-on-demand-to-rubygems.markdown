@@ -6,7 +6,7 @@ author: Thiago Marano
 categories: features announcements ruby
 ---
 
-The differences between doing Continuous Deployment and Continuous Delivery are most apparent when building Ruby gems. Releasing every change you make to rubygems.org is likely not the best way to release usable chunks of functionality to your users. A build pipeline with a manually triggered deployment stage is a much easier way to handle this case.
+Doing Continuous Integration for Ruby gems is not a new idea. Given that, one might want to also build and release new versions of the gem to rubygems.org from your CI server(or service!). That said, releasing every change you make to rubygems.org is likely not the best way to release usable chunks of functionality to your users. A build pipeline with a manually triggered deployment stage is a much easier way to handle this case.
 
 When setting up a build for your Ruby gem on Snap (we detect the presence of a `.gemspec` file to guess that you might be doing so), we offer to set up a deployment stage to rubygems.org that can be triggered on demand to deploy any version of the gem you have built successfully already. The video below explains better how this works:
 

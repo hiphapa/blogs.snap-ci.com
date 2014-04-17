@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  Push on demand to rubygems.org
+title:  Releasing Ruby gems from your CI environment
 date:   2014-04-17
 author: Thiago Marano
 categories: features announcements ruby

@@ -1,35 +1,34 @@
 ---
 layout: post
-title:  "Why Snap-CI and Travis-CI are not the same thing."
+title:  "Why Snap and Travis are not the same thing."
 date:   2014-07-22
 author: Marco Valtas
 categories: continuous_delivery
 ---
 
-Being on Snap-CI team lets you be certain of two thing. First, you will learn a
-lot about how projects get built and deployed. Second, you will, sooner or
+Being part of the Snap team lets you be certain of two things. First, you will learn a
+lot about how projects get built and deployed. Second, you will sooner or
 later, have to answer the following question:
 
-> "What is the difference between Snap-CI and [Travis-CI](https://travis.org)
+> "What is the difference between Snap and [Travis](https://travis.org)
 > ([CircleCI](http://circleci.com), [Codeship](https://www.codeship.io),
 > [and](https://drone.io) [others](https://buildbox.io))? Why should I use
-> Snap-CI?"
+> Snap?"
 
 ## Continuous Integration (CI) and Continuous Delivery (CD)
 
-Often these two concepts get mixed together on people's speech, maybe because
-there is a dependency between them. You can't practice Continuous Delivery
+Often times, these two mixed together on when people talk about them, but that is perhaps because
+there is a dependency between them. One cannot practice Continuous Delivery
 without first practicing Continuous Integration. Still, these are two
 different concepts, in short:
 
 * Continuous Integration - Automated build and test of your software when a
-  change is made by anyone on the team.
-* Continuous Delivery - Ability of deploying your software in an automated
-  fashion by demand.
+  change is made by anyone on the team, ideally merging all your work in some sort of a mainline (aka master)
+* Continuous Delivery - Ability and confidence that your software is shippable at any point in time. This is usually made possible by having a rigorous set of tests and robust deployment scripts and tools.
 
-## Snap-CI and Travis-CI? What's the difference?
+## Snap and Travis? What's the difference?
 
-Yes, there's a fair similarity in the names and both basic features of
+Yes, there's a fair amount of similarity in the names and both basic features of
 building and testing your software. But after that, this similarity goes down
 quickly when you start to compare other features.
 

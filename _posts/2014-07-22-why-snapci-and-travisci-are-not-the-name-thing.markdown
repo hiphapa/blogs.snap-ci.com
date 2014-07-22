@@ -57,10 +57,15 @@ On more advanced configurations we might consider the setup of its
 infra-structure by one or more stages.
 
 The ability of organizing these automation steps allows us to split different
-concerns when we are preparing our software to step into production. We can
-think about unit tests, code format verification, functional tests, security
-checks and so on. Our software goes through these stages, one by one, and can be
-considered "good for production" when it pass all of them.
+concerns when we are preparing our software to step into production. Another
+advantage of organizing this flow into steps is fast feedback. When the project
+is going through the pipeline how soon can you tell that something went wrong?
+Stages allows you to get that fast feedback, if the software fails to pass a
+stage the pipeline is stopped and the team members are notified about the
+failure. We can think about unit tests, code format verification, functional
+tests, security checks and so on. Once our software goes through these stages,
+one by one, it can be considered "good for production" when it pass all of
+them.
 
 ### Deployment
 

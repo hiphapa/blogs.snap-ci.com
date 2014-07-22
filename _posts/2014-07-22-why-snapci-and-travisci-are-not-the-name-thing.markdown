@@ -113,8 +113,18 @@ abide with the first practice of deployment pipelines:
 > "Compile your binaries only once"
 > Continuous Delivery, Chapter 5, page 113.
 
-As result, when you have a manual stage to deploy to production, we can deploy
-the same binary which went through all stages.
+The importance of sticking with your binaries and not recreating them is
+founded on being confident that whatever is about to be deployed is the same
+which was produced. Recompiling, repackaging or more generally, recreating your
+artifacts can be problematic, if the artifact which will be deployed is a new
+one, how can you tell that it will pass all stages? Small changes on how it's
+packaged or compiled could be a factor on the behavior of your software, and
+will not be possible to predict what effects that could have.
+
+We should also mention that keep artifacts is key for verifying and debugging.
+Through the use of artifacts you keep a history of your packages; developers,
+quality analytists, security auditing and others can retrieve a specific
+version of your software and verify it, check its behavior or debug issues.
 
 ### Continuous Integration
 

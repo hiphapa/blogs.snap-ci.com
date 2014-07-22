@@ -62,10 +62,13 @@ advantage of organizing this flow into steps is fast feedback. When the project
 is going through the pipeline how soon can you tell that something went wrong?
 Stages allows you to get that fast feedback, if the software fails to pass a
 stage the pipeline is stopped and the team members are notified about the
-failure. We can think about unit tests, code format verification, functional
+failure. Since there is a logical organization of these steps, when one fails,
+the team can quickly identify in which set of commands the failure has
+happened.
+
+We can think about these as unit tests, code format verification, functional
 tests, security checks and so on. Once our software goes through these stages,
-one by one, it can be considered "good for production" when it pass all of
-them.
+one by one, passing all of them it can be considered "good for production".
 
 ### Deployment
 

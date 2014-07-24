@@ -26,7 +26,7 @@ different concepts, in short:
   change is made by anyone on the team, ideally merging all your work in some sort of a mainline (aka master)
 * Continuous Delivery - Ability and confidence that your software is shippable at any point in time. This is usually made possible by having a rigorous set of tests and robust deployment scripts and tools.
 
-## Snap and Travis? What's the difference?
+## Snap-(CI) and Travis-(CI)? What's the difference?
 
 Yes, there's a fair amount of similarity in the names and both basic features of
 building and testing your software. But after that, this similarity goes down

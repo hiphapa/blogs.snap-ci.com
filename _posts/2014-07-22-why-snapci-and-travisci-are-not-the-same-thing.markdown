@@ -15,14 +15,9 @@ As a member of the Snap team, you can be certain of two things. First, you will 
 
 ## Continuous Integration (CI) and Continuous Delivery (CD)
 
-Often times, these two mixed together on when people talk about them, but that is perhaps because
-there is a dependency between them. One cannot practice Continuous Delivery
-without first practicing Continuous Integration. Still, these are two
-different concepts, in short:
-
 The two terms often get mixed together in people's mind and speech. Perhaps this is due to the dependency between them. You can't practice Continuous Delivery without first having a strong discipline around Continuous Integration. However, these are two very different concepts. In short:
 
-* Continuous Integration - the automated build and test of your software when a change is made by anyone on the team, with all work on a happening on a shared branch (aka master)
+* Continuous Integration - the automated build and test of your software when a change is made by anyone on the team, with all work happening on a shared branch (aka master)
 * Continuous Delivery - the ability to keep your software shippable at any point in time. This is usually made possible by having a rigorous set of automated tests and robust automated deployment scripts and tools.
 
 ## Snap-(CI) and Travis-(CI)? What's the difference?

@@ -1,14 +1,12 @@
 ---
 layout: post
-title:  "Why Snap and Travis are not the same thing."
+title:  "Why Snap-(CI) and Travis-(CI) are not the same thing."
 date:   2014-07-22
 author: Marco Valtas
 categories: continuous_delivery
 ---
 
-Being part of the Snap team lets you be certain of two things. First, you will learn a
-lot about how projects get built and deployed. Second, you will sooner or
-later, have to answer the following question:
+As a member of the Snap team, you can be certain of two things. First, you will learn a lot about how projects get built and deployed. Second, you will, sooner or later, have to answer the following question:
 
 > "What is the difference between Snap and [Travis](https://travis.org)
 > ([CircleCI](http://circleci.com), [Codeship](https://www.codeship.io),
@@ -22,20 +20,18 @@ there is a dependency between them. One cannot practice Continuous Delivery
 without first practicing Continuous Integration. Still, these are two
 different concepts, in short:
 
-* Continuous Integration - Automated build and test of your software when a
-  change is made by anyone on the team, ideally merging all your work in some sort of a mainline (aka master)
-* Continuous Delivery - Ability and confidence that your software is shippable at any point in time. This is usually made possible by having a rigorous set of tests and robust deployment scripts and tools.
+The two terms often get mixed together in people's mind and speech. Perhaps this is due to the dependency between them. You can't practice Continuous Delivery without first having a strong discipline around Continuous Integration. However, these are two very different concepts. In short:
+
+* Continuous Integration - the automated build and test of your software when a change is made by anyone on the team, with all work on a happening on a shared branch (aka master)
+* Continuous Delivery - the ability to keep your software shippable at any point in time. This is usually made possible by having a rigorous set of automated tests and robust automated deployment scripts and tools.
 
 ## Snap-(CI) and Travis-(CI)? What's the difference?
 
-Yes, there's a fair amount of similarity in the names and both basic features of
-building and testing your software. But after that, this similarity goes down
-quickly when you start to compare other features.
+There is a fair bit of similarity in the names of both tools and also in that they both allow you to build and test your software.
 
-Build and test when a change happened is the basic idea of Continuous
-Integration, both Snap and Travis have this feature. Nonetheless Snap uses the
-idea of a **Deployment Pipeline** as stated on Part II of the Continuous
-Delivery book.
+Building and running tests when a change happens is the basic premise of Continuous Integration. Both Snap and Travis have this feature. However, Snap augments this with the idea of a **Deployment Pipeline** as stated on Part II of the Continuous Delivery book.
+
+What this means is while most Continuous Integration tools consider CI to be the endpoint (or maybe allow you to configure an automatic deployment), running tests is but the start of the journey in Snap. You see his when you start to compare some of the other features of Snap.
 
 ## Snap and the Deployment Pipeline
 
@@ -43,138 +39,78 @@ Here's an example of a simple Deployment Pipeline:
 
 ![Snap Pipeline](/assets/images/screenshots/why-snapci-and-travisci-are-not-the-same-thing/snap_ci_pipeline.png)
 
-The first rectangle show us which changes where introduced together with a link
-to [Github](https://github.com) for more details. The rest are the **stages** of
-this pipeline.
+The first rectangle show a set of changes that were introduced together with a link to [Github](https://github.com) for more details. The rest are the **stages** of this pipeline.
 
-### What stages are and what they are for?
+### What are stages and what are they for?
 
-In short, stages are just a group of commands, a logic separation of a set of
-commands. Mind all phases which a software needs to go through before is
-deployed into production. Some need to be compiled, tested, analysed and so on.
-On more advanced configurations we might consider the setup of its
-infra-structure by one or more stages.
+Stages are a set of logically related commands.
 
-The ability of organizing these automation steps allows us to split different
-concerns when we are preparing our software to step into production. Another
-advantage of organizing this flow into steps is fast feedback. When the project
-is going through the pipeline how soon can you tell that something went wrong?
-Stages allows you to get that fast feedback, if the software fails to pass a
-stage the pipeline is stopped and the team members are notified about the
-failure. Since there is a logical organization of these steps, when one fails,
-the team can quickly identify in which set of commands the failure has
-happened.
+To confidently say that your software is production ready, you need to look it at from multiple different angles. Unit tests, code formatting, functional tests, security checks, performance tests and so on. On more advanced projects, this might also include deployment of the software to testing environments and the execution of either automatic or manual tests against these deployed testing environments.
 
-We can think about these as unit tests, code format verification, functional
-tests, security checks and so on. Once our software goes through these stages,
-one by one, passing all of them it can be considered "good for production".
+Stages model each of these activities. Your software goes through these stages, one by one, and can be considered "good for production" when it pass all of them. On the flip side, when a stage fails, it reveals that an aspect of the software's quality has failed its test for production readiness. When a stage fails, the pipeline is stopped and the team members are notified about the failure. Since there is a logical organization of these steps, when one fails, the team can quickly identify in which set of commands the failure has happened. This results in much faster feedback than would otherwise be possible.
+
+The ability to organize these automation steps allows you to separate different concerns when preparing your software to be deployed to production. Snap's support for deployment pipeline lets you create stages and also shows exactly how far each set of changes made it down the pipeline.
 
 ### Deployment
 
-By the end of a series of stages we can deploy our software into production. But
-most development teams do not jump into production after all automated stages,
-instead they use an environment similar to production for further testing and
-verification (UAT).
+At the end of a series of stages you can deploy your software to production. However most development teams do not jump to production after all automated tests pass. Instead, they use an environment similar to production for further testing and verification; usually called Staging or UAT (short for user-acceptance-testing).
 
-An important aspect here is to control what, where and when things get deployed.
-Coming back to the Continuous Delivery definition above:
+An important aspect here is to control what, where and when things get released. Coming back to the Continuous Delivery definition above:
 
-* Continuous Delivery - Ability of deploying your software in an automated
-  fashion by demand.
+* Continuous Delivery - the ability to release your software on demand, with
+    high quality and low risk; most often achieved by pervasive automation.
 
-The translation of "by demand" on Snap is "manually triggered stages":
+The "on demand" part of the definition translates to a "manually triggered stage" on Snap:
 
 ![Snap - Manually Triggered Stages](/assets/images/screenshots/why-snapci-and-travisci-are-not-the-same-thing/snap_ci_manual_stage.png)
 
-What this means is that this stage, called "publish", won't be executed
-automatically but only when someone manually clicks on it. In this example in
-particular this means that any change made into the project won't be put in
-production automatically, but only when we want to.
+What this means is that this stage, called "publish", won't be executed as soon as the prior stage completes successfully but only when someone manually triggers it by clicking it. In this particular example this means that any change made into the project won't be put into production automatically, but only when you want to.
 
-We can have any amount of manual stages, and between them, automatically
-triggered stages. This is a key part of this feature, it gives us the
-flexibility to create complex sequences of automation and deployment for our
-project. One more detail, given the manual stages can be triggered multiple
-times you can deploy old versions of your application. But for that it is
-important to configure artifacts.
+You can have any number of manual stages, and between them, automatically triggered stages. This is a key part of this feature. It gives you the flexibility to create deployment automations that exactly as simple or as complex as the needs of your business and your software.
+
+Manual stages can be triggered multiple times. This means you can deploy old versions of your application. But in order to do that robustly, it is important to configure artifacts.
 
 ### Artifacts
 
-Each stage executes a series of commands, by the end, we want to deploy on UAT
-or production the changes which went through all stages. Still, what about our
-compilation artifacts? Being more specific, if our project creates packages,
-binaries and etc, do we have to created it again?
+Each stage executes a series of commands to verify your software. Once this is done, if you want to deploy your application on to UAT or production what do you do about your compilation artifacts? If your project creates packages, binaries etc, do you have to create those again? Should you?
 
-The answer is no. Here comes artifacts, setting one or more directories on Snap
-you can tell it to save and restore its contents. The importance of this is to
-abide with the first practice of deployment pipelines:
+The answer is no. This is where artifacts help. You can ask Snap to save the contents of one or more directories in your build as an artifact directory. Snap will then save and restore the contents of this directory for each stage. The importance of this feature is explained in detail as the first practice of deployment pipelines:
 
 > "Compile your binaries only once"
 > Continuous Delivery, Chapter 5, page 113.
 
-The importance of sticking with your binaries and not recreating them is
-founded on being confident that whatever is about to be deployed is the same
-which was produced. Recompiling, repackaging or more generally, recreating your
-artifacts can be problematic, if the artifact which will be deployed is a new
-one, how can you tell that it will pass all stages? Small changes on how it's
-packaged or compiled could be a factor on the behavior of your software, and
-will not be possible to predict what effects that could have.
+As result, when you have a manual stage that deploys to production, you can have it deploy the exact same binary which went through all the previous stages of this pipeline, regardless of how far back in history the pipeline was initially triggered. Recompiling, repackaging or more generally, recreating your artifacts can be problematic, as small changes in the environment could subtly impact how your software is packaged  resulting in errors that are hard to track down/diagnose. Reusing artifacts eliminates this whole class of problems.
 
-We should also mention that keep artifacts is key for verifying and debugging.
-Through the use of artifacts you keep a history of your packages; developers,
-quality analytists, security auditing and others can retrieve a specific
-version of your software and verify it, check its behavior or debug issues.
+Artifacts are also helpful for verifying and debugging. By maintaining a history of your packages; developers, quality analysts, security audit folks and others can retrieve a specific version of your software and test it knowing that it is exactly the same software as in any given environment.
 
 ### Continuous Integration
 
-Among Continuous Delivery recommendations for Continuous Integration practices
-there's a highlight on branch usage (Branches, Streams, and Continuous
-Integration, Chapter 14, page 390). The basic idea is, if different teams work
-on the same code but are split by branches, we can't assume that they are
-integrating these changes continuously. The streams of work are diverging and we
-are only postponing the merge conflicts. This doesn't mean that you can't use
-branches, but just that they should be as short lived as possible, maybe a few
-days.
+Among Continuous Delivery recommendations for Continuous Integration practices there's a highlight on branch usage (Branches, Streams, and Continuous Integration, Chapter 14, page 390).
 
-Snap has a solution to help out on these code integrations and anticipate when
-two or more streams of work are diverging, its called [_Automatic Branch
-Tracking_](http://docs.snap-ci.com/working_with_branches/automatic_branch_tracking/).
-When enabled, Snap will not only execute the pipeline on the branch but also
-will attempt to merge (locally) with the main tree, and execute the pipeline
-against the merged code. Like so:
+The basic idea is, if different teams work on the same code but are split by branches, we can't assume that they are integrating these changes continuously. Even when they are, the state of the individual branches is not visible to the team at large. This lack of visibility means that potential conflicts are not highlighted early and we are merely postponing their resolution.
+
+This, of course, doesn't mean that you shouldn't use branches; just that they should be as short lived as possible.
+
+Snap has a solution to help out on these code integrations and highlight when two or more streams of work are diverging. When [_Automatic Branch Tracking_](http://docs.snap-ci.com/working_with_branches/automatic_branch_tracking/) and [_Integration Pipelines_](http://docs.snap-ci.com/working_with_branches/integration_pipelines/) is enabled, Snap will not only execute the pipeline on the branch but will also attempt to do a local merge of the branch with the main tree and execute the pipeline against the merged code. Like so:
 
 ![Snap - Automatic Branch Tracking](/assets/images/screenshots/why-snapci-and-travisci-are-not-the-same-thing/snap_ci_auto_branch_tracking.png)
 
-By the end of the pipelines we not only know that our changes goes can pass
-through the pipeline but also it also will pass if we perform a merge with the
-main development tree. We are always aware if our changes are diverging from the
-main tree.
+By the end of the pipelines you not only know that your changes pass through the pipeline but also it also will pass if you perform a merge with the main development tree. You are always aware if your changes are diverging from the main tree and in a position to take corrective action if required. Also, the whole team has visibility into the health of each branch.
 
 ### Auditing and Compliance
 
-Finally I will bring a topic maybe not too popular among developers but
-important for IT organizations in general, Auditing and Compliance. This topic
-is briefly handled on Continuous Delivery, Chapter 15, page 436.
+Finally I will bring up a topic that may not be too popular among developers but is important for IT organizations in general, Auditing and Compliance. This topic is briefly handled on Continuous Delivery, Chapter 15, page 436.
 
-When we work on a team and we see that our deployment pipeline is ready for
-deployment, if we start the deployment, what changes will be published?
+When you see that your deployment pipeline is ready for deployment. If you start the deployment, what changes will be published?
 
-For this question Snap give us the "Stage History" feature, where all changes
-between stages can be visualized. Here's a example of some changes that will go
-into production if we deploy:
+To answer this question Snap give you the "Stage History" feature, where all changes between stages can be visualized. Here's a example of some changes that will go into production if you deploy:
 
 ![Snap - Stage History](/assets/images/screenshots/why-snapci-and-travisci-are-not-the-same-thing/snap_ci_stage_history.png)
 
-This history allow us to check all previous changes that got deployed and which
-will be deployed next. Not only this, but also when and who triggered the past
-deployments, giving the information for traceability needed which medium and
-large enterprises rely on.
+This history allow you to check all previous changes that got deployed and which will be deployed next. In addition, it also tells you who triggered the past deployments and when - giving the traceability many teams crave.
 
 ## Conclusion
 
-By these examples I hope I made more clear what differentiates Snap from other
-similar offers. These similarities start with the naming and its basic features
-but soon they go down as you start to compare other features. Snap is focused on
-Continuous Delivery practices and not only Continuous Integration ones, this is
-the difference about Snap.
+With these examples I hope I have explained what differentiates Snap from similar offerings. The name and basic features appear less similar as soon as you start to dig deeper and compare other features. The practice of Continuous Integration is a subset of Continuous Delivery. However, a tool for doing CI cannot be trivially extended to support Continuous Delivery - even if it allows you to configure a deployment at the end of your build.
 
+This explicit focus on features that enable Continuous Delivery is the primary difference about Snap.

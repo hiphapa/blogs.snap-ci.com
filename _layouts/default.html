@@ -10,10 +10,11 @@
       - /_assets/stylesheets/main.css.scss
       - /_assets/stylesheets/syntax.css.scss
       {% endcss_asset_tag %}
-      
+
       {% javascript_asset_tag application %}
       - /_assets/javascripts/jquery-1.8.2.min.js
       - /_assets/javascripts/social-likes.min.js
+      - /_assets/javascripts/retina.js
       {% endjavascript_asset_tag %}
 
       <script type="text/javascript">
@@ -27,7 +28,7 @@
           ga.src = ('https:' == document.location.protocol ? 'https://' : 'http://') + 'stats.g.doubleclick.net/dc.js';
           var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
         })();
-      </script>      
+      </script>
     </head>
     <body>
       <div class="container">

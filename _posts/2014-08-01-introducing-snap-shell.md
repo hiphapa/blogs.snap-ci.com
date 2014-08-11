@@ -1,7 +1,7 @@
 ---
 layout: post
 title:  Introducing the Snap Shell
-date:   2014-08-01
+date:   2014-08-11
 author: Ketan Padegaonkar
 categories: features announcements
 ---

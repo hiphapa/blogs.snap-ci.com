@@ -102,6 +102,7 @@
     }
 
     .post-content {
+      overflow: hidden;
       @include border-radius(0 0 2px 2px);
 
       h1, h2, h3, h4 {
@@ -194,6 +195,21 @@
           width: 640px;
           margin: 0 auto;
         }
+      }
+
+      .cta {
+        margin: 10px auto;
+        text-align: center;
+        color: white;
+        display: block;
+        padding: 10px 0;
+        background-color: rgba(230, 91, 152, 0.98);
+
+        &:hover {
+          text-decoration: none;
+          background-color: darken(rgb(230, 91, 152), 10%);
+        }
+
       }
     }
 

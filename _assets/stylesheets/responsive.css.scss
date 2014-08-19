@@ -6,7 +6,7 @@
       }
 
       #main {
-        width: 100% !important; 
+        width: 100% !important;
       }
     }
   }
@@ -15,16 +15,6 @@
 @media only screen and (max-width : 860px) {
   body .site {
     #header {
-      padding: 0 15px;
-      
-      .logo {
-        width: 140px;
-        height: 30px;
-        background-size: 120px 36px;
-        padding: 10px 0 0 125px;
-        font-size: 16px;
-      }
-      
       .header-actions {
         .login {
           display: none;
@@ -37,7 +27,7 @@
         }
       }
     }
-    
+
     #content {
       padding: 0 15px;
     }
@@ -47,21 +37,19 @@
 @media only screen and (max-width : 680px) {
   body .site {
     #header {
-      padding: 10px 10px 5px 15px;
-      margin-bottom: 6px;
-      
       .logo {
-        background-size: 100px 30px;
-        padding: 6px 0 0 105px;
+        background-size: 100px;
+        height: 32px;
+        width: 30px;
       }
-      
+
       .header-actions {
         .docs, .blogs {
           font-size: 12px;
         }
       }
     }
-    
+
     #content {
       padding: 0 10px;
     }
@@ -74,18 +62,18 @@
       & ~ .post {
         margin-top: 15px;
       }
-      
+
       .youtube-embed {
         padding: 2px;
         margin-top: 10px;
         background-color: rgba(100, 100, 100, 0.7 );
-        
+
         iframe {
           display: block;
           width: 100%;
         }
       }
-      
+
       .post-header {
         a {
           font-size: 24px !important;
@@ -119,28 +107,24 @@
 @media only screen and (max-width : 480px) {
   body .site {
     #header {
-      padding: 10px 10px 5px 10px;
-      margin-bottom: 4px;
-      @include clearfix;
-      
       .logo {
-        width: 100px;
-        height: 20px;
-        background-size: 70px 20px;
-        padding: 4px 0 0 75px;
-        font-size: 10px;
+        background-size: 75px;
+        height: 28px;
+        width: 24px;
       }
-      
+
       .header-actions {
-        .docs, .blogs{
+        .docs, .blogs {
           font-size: 10px;
-          margin-left: 4px;
-          padding: 0;
+        }
+
+        .docs, .login, .blogs {
+          padding: 1px 0;
         }
       }
     }
   }
-  
+
   .posts {
     .post {
       .post-header {

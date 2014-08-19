@@ -15,26 +15,28 @@ body {
     color: #333;
     text-decoration: none;
   }
-  
+
   .site {
+    box-sizing: border-box;
+
+    #header, #content {
+      margin: 0 auto;
+      padding: 0 15px;
+    }
+
     #header {
-      padding: 10px 30px 5px 30px;
-      margin-bottom: 8px;
-      border-bottom: 1px solid #DDD;
-      background-color: #FFF;
+      padding: 4px 55px 0;
+      background-color: #565656;
       @include clearfix;
-      
+
       .logo {
         float: left;
-        width: 200px;
-        height: 40px;
-        background: url('images/snap-logo-black.png') no-repeat 0 0;
-        padding: 12px 0 0 165px;
-        font-family: MarydaleRegular;
-        font-size: 22px;
-        color: #ff5e3b;
+        height: 38px;
+        width: 36px;
+        background: url('images/snap-logo-white.png') no-repeat 0 0;
+        background-size: 126px;
       }
-      
+
       .header-actions {
         float: right;
         font-size: 13px;
@@ -42,21 +44,21 @@ body {
         @include clearfix;
 
         .docs, .blogs, .login {
-          color: #676767;
+          color: #EEE;
           float: right;
-          font-size: 18px;
+          font-size: 16px;
           margin-left: 20px;
           padding: 8px;
           text-align: center;
         }
       }
     }
-    
+
     #content {
       font-family: 'RobotoLight',Helvetica,Arial,'sans serif';
-      padding: 0 40px 0 60px;
+      margin: 0 40px;
       @include clearfix;
-      
+
       #main {
         float: left;
         width: 66%;
@@ -68,20 +70,21 @@ body {
         right: 0;
         float: right;
         width: 25%;
-        padding: 5px 15px;
+        padding-right: 15px;
+        margin-right: 55px;
         font-family: 'RobotoLight' Helvetica Arial 'sans serif';
         @include border-radius(2px);
-        
+
         h1 {
           font-family: 'RobotoThin' Helvetica Arial 'sans serif';
         }
       }
     }
-   
+
     #footer {
       margin-top: 20px;
     }
-  }  
+  }
 }
 
 @import 'responsive.css.scss';

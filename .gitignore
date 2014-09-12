@@ -4,3 +4,4 @@ bin
 .bundle
 .sass-cache
 sitemap.xml
+.DS_store

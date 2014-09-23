@@ -16,9 +16,7 @@ We have had many people ask us about getting their Clojure builds running on Sna
 
 As an example in this case, I will pick the popular Midje testing library and see how to build it on Snap. I have [forked it under my account](https://github.com/badrij/Midje) in Github.
 
-Click on the "Add repository" link and pick a repository. In this case, I am going to pick my fork of the Midje repository.
-
-<img src="/assets/images/screenshots/clojure/01-start.png" class="screenshot"/>
+Click on the "+ Repository" link and pick a repository. In this case, I am going to pick my fork of the Midje repository.
 
 <img src="/assets/images/screenshots/clojure/02-select.png" class="screenshot"/>
 
@@ -44,5 +42,7 @@ Having made these changes, I now save the build configuration. Snap kicks off th
 In a minute or two, the build completes and you can see the test results.
 
 <img src="/assets/images/screenshots/clojure/07-passed.png" class="screenshot"/>
+
+Of course, this is just the start. You can use Snap to extend your build in a lot of different directions from here. You can pack and release the jars. If you were building an application, you can configure deployments following the initial stage. See the [What's next section](http://docs.snap-ci.com/getting-started/#whats-next) of our documentation for details on some of these!
 
 Note: The first build usually runs slightly longer as it needs to download all dependent jars from either maven-central or clojars. These jars are automatically cached in your $HOME directory and subsequent runs will run much faster!

@@ -5,3 +5,5 @@ bin
 .sass-cache
 sitemap.xml
 .DS_store
+.idea/
+vendor/bundle

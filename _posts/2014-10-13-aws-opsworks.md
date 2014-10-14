@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  "Continuous Delivery from Snap to AWS OpsWorks"
+title:  "Continuous Delivery to AWS OpsWorks"
 date:   2014-10-13
 author: Akshay Karle
 categories: announcements feature deployments

@@ -46,3 +46,5 @@ Have a look at our [docs](http://docs.snap-ci.com/deployments/aws-deployments/#u
 ![Snap deploy logs](/assets/images/screenshots/aws-elastic-beanstalk-revisited/deploy-console-logs@2x.png){: .screenshot .big}
 
 ![AWS console for Application name](/assets/images/screenshots/aws-elastic-beanstalk-revisited/elastic-beanstalk-dashboard-deployed@2x.png){: .screenshot .big}
+
+As always, I would love to hear if you have any comments or tips to make this experience even better. Leave your comments below or [contact us]({{ site.link.contact_us }}) if you have any questions.

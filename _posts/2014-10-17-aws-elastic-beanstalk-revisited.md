@@ -1,19 +1,23 @@
 ---
 layout: post
-title:  "AWS Elastic Beanstalk revisited"
+title:  "AWS Elastic Beanstalk: Revisited"
 date:   2014-10-17
 author: Akshay Karle
 categories: announcements feature deployments
 ---
 
-We had [previously demonstrated a way to deploy your application to Elastic Beanstalk]({% post_url 2013-10-21-aws-elastic-beanstalk %}) which involved creating a zip of your application and doing a bunch of other aws commands. Today I'm excited to announce new improved and highly simplified in deployments to the beanstalk. Now you can use Snap's [Elastic Beanstalk Deploy recipe](http://docs.snap-ci.com/deployments/aws-deployments/#using-elastic-beanstalk-to-deploy-to-aws) to simplify your deployments. You need to setup a beanstalk application in aws just as before. Have a look at the [AWS getting started guide](http://aws.amazon.com/elasticbeanstalk/getting-started/) or our [previous blog]({% post_url 2013-10-21-aws-elastic-beanstalk %}) for steps on how to create a beanstalk application.
+Last year, we had [demonstrated a way to deploy your application to Elastic Beanstalk]({% post_url 2013-10-21-aws-elastic-beanstalk %}). This involved creating a zip of your application and running a bunch of AWS commands. Kinda fell short of the kind of ease of use we aspire to and are known for.
 
-> *TIP:* When creating the Elastic Beanstalk application on the AWS select a `Sample Application` and later when deploying through Snap supply a S3 bucket.
+Today I'm excited to announce a new and much improved way to do deployments to the beanstalk. You can now use Snap's [Elastic Beanstalk Deploy recipe](http://docs.snap-ci.com/deployments/aws-deployments/#using-elastic-beanstalk-to-deploy-to-aws) to do this.
 
-Once you have setup the application on AWS you can deploy from Snap by following 3 simple steps:
+You'll need to setup an application in AWS Beanstalk. Have a look at the [AWS getting started guide](http://aws.amazon.com/elasticbeanstalk/getting-started/) or our [previous blog]({% post_url 2013-10-21-aws-elastic-beanstalk %}) for steps on how to create a Beanstalk application.
 
-* Add a Elastic Beanstalk Deploy stage to your pipeline configuration.
-* Enter the Application name, Environment name, the S3 bucket and AWS credentials to the stage.
+> *TIP:* When creating the Elastic Beanstalk application on AWS, select a `Sample Application` and later when deploying through Snap supply a S3 bucket.
+
+Once you have setup the application on AWS you can deploy from Snap with the following 3 simple steps:
+
+* Add an Elastic Beanstalk Deploy stage to your pipeline configuration.
+* Provide the Application name, Environment name, the S3 bucket and AWS credentials to the stage.
 * Hit save and watch your changes get deployed to Elastic BeanStalk.
 
 

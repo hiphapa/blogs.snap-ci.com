@@ -6,6 +6,10 @@ author: Shishir Das
 categories: java scala play deployments
 ---
 
+> Update: 20th Oct, 2014
+>
+> Snap now has improved support for Scala. `sbt` is available as a binary on the build machine. You can start using sbt on Snap without having to create an sbt executable in your source repository. You may rad more about it on our [documentation site](http://docs.snap-ci.com/the-ci-environment/languages/scala/).
+
 Typically, we do not claim to offer first class support for a language/framework on Snap unless we provide some basic heuristics to help users set up their builds. Based on this defintion, Snap currently supports Ruby, Rails & Java builds. However, Snap can run builds for any JVM based language. In this post, I will talk about how to set up a build for simple Scala/Play project.
 
 If you have your own project on GitHub you can use that. You would need to add sbt-laucher to your project if not present and a script to invoke it. This might look something like

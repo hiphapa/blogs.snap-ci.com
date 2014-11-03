@@ -8,7 +8,7 @@ categories: announcements
 
 Snap's stages currently provide an isolated environment around every command that you run in them. This is done by executing each of your build commands in their own shell. What this means though is that any [internal commands](http://www.gnu.org/software/bash/manual/html_node/Bourne-Shell-Builtins.html#Bourne-Shell-Builtins) that you run in that command don't impact any following commands. 
 
-While isolation is good, this behaviour was often confusing. We heard from quite a few of you who logged support tickets wondering why your attempts at doing things like `cd` and `export` did not take effect and work like they did on your machine. 
+While isolation is good, this behaviour was often confusing. We heard from quite a few of you who logged support tickets wondering why your attempts at doing things like *cd* and *export* did not take effect and work like they did on your machine. 
 
 We thought it was perfectly reasonable that you would expect commands in your build environment to work as they do on your local information. So we have decided to change the behaviour in Snap to better match your expectations!
 
@@ -32,6 +32,8 @@ $ (cd some_dir && run_specs)
 $ run_something_else
 {% endhighlight %}
 
+Running a command within `()` ensures that it runs in a subshell and so the subsequent command will run in the $SNAP_WORKING_DIR just as before.
+
 #### Changes with the *exit* command:
 
 The *exit* command will now cause your session to end - and thus kill your stage! We've had cases where users entered the exit command to continue or fail their builds based on the exit status. Let's look at the following example used for the *heroku run* command:
@@ -48,21 +50,19 @@ $ buffer_file=/tmp/last_heroku_run; heroku run --app 'APP_NAME' 'YOUR_COMMAND; e
 $ heroku maintenance:off --app 'APP_NAME'
 {% endhighlight %}
 
-Running a command within `()` ensures that it runs in a subshell and so it would not exit the current shell and your build will work just like earlier.
-
 #### Changes with the *export* command:
 
-The `export` command will now cause environment variables to be set for all the commands in the stage. Let's look at an example again:
+The *export* command will now cause environment variables to be set for all the commands in the stage. Let's look at an example again:
 
 {% highlight bash %}
 $ export RAILS_ENV=production; bundle exec rake assets:precompile
 $ bundle exec rake spec:smokes
 {% endhighlight %}
 
-This will work just fine in today's case as the RAILS_ENV will be unset when running the *bundle exec rake spec:smokes* command. But when the bash session will be persisted across the stage, you may have to unset the RAILS_ENV variable before running the smoke tests. You can do so by adding an unset command before running the smoke command:
+This will work just fine in today's case as the RAILS_ENV will be unset when running the *bundle exec rake spec:smokes* command. But when the bash session will be persisted across the stage, you may have to unset the RAILS_ENV variable before running the smoke tests. One way to make sure that the exported variable is not available to subsequent command is to run in it a subshell:
 
 {% highlight bash %}
-$ export RAILS_ENV=production; bundle exec rake assets:precompile; unset RAILS_ENV
+$ (export RAILS_ENV=production; bundle exec rake assets:precompile)
 $ bundle exec rake spec:smokes
 {% endhighlight %}
 

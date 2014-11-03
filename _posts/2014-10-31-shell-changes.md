@@ -1,0 +1,70 @@
+---
+layout: post
+title:  "Changes to the way commands are run in Snap"
+date:   2014-10-31
+author: Akshay Karle
+categories: announcements
+---
+
+# tl;dr
+
+The Snap team will be making changes to run every Stage in it's own shell instead of running every command in it's own shell. We are letting you know in advance the changes that we will be making so that you can fix your build to accommodate these changes. These changes will go in effect on Wednesday, Nov 5th, 2014 around evening UTC. We will run a migration attempting to fix your build but for some complex commands this may not work and you may have to edit your configuration.
+
+# The long version
+
+Right now every command runs in it's own shell. So any [internal commands](http://www.gnu.org/software/bash/manual/html_node/Bourne-Shell-Builtins.html#Bourne-Shell-Builtins) that you run in that command don't have any consequences on the subsequent commands. On a number of support requests and confusion of why every command is run in it's own shell we have decided to change this behaviour and run all commands for a stage in one shell.
+
+This change may affect your existing builds if you are changing the state of your shell by using the internal commands like *cd*, *export* or *exit*. An easy way to make sure your builds continue to work is to just run these internal commands in a [subshell](http://www.gnu.org/software/bash/manual/html_node/Command-Grouping.html). Following are some sample commands that you might have to change in your build configuration:
+
+#### Changes with the *cd* command:
+
+Changing the directory in one command will now change for every subsequent commands. Lets say you had a stage like:
+
+{% highlight bash %}
+$ cd some_dir && run_specs
+$ run_something_else
+{% endhighlight %}
+
+Today, *run_something_else* runs in the *$SNAP_WORKING_DIR* and not in *some_dir*. But once we deploy the changes that persist the session across the entire stage the working directory set in one command will be present in the next command. So, you may want to do something like the following to make sure your build doesn't fail:
+
+{% highlight bash %}
+$ (cd some_dir && run_specs)
+$ run_something_else
+{% endhighlight %}
+
+#### Changes with the *exit* command:
+
+The *exit* command will now cause your session to end. We've had cases where users entered the exit command to continue or fail their builds based on the exit status. Let's look at the following example used for the *heroku run* command:
+
+{% highlight bash %}
+$ buffer_file=/tmp/last_heroku_run; heroku run --app 'APP_NAME' 'YOUR_COMMAND; echo $?' | tee $buffer_file; exit `tail -1 $buffer_file`
+$ heroku maintenance:off --app 'APP_NAME'
+{% endhighlight %}
+
+Today, *heroku maintenance:off --app 'APP_NAME'* will run if the heroku run command would do *exit 0*. But once we push the change to run each stage in a shell, this will always fail even with a *exit 0* since *exit* will now actually exit the current session. The easiest way to mitigate such a case is to run the exit command in a subshell. You can change your stage to be something like the following:
+ 
+{% highlight bash %}
+$ buffer_file=/tmp/last_heroku_run; heroku run --app 'APP_NAME' 'YOUR_COMMAND; echo $?' | tee $buffer_file; (exit `tail -1 $buffer_file`)
+$ heroku maintenance:off --app 'APP_NAME'
+{% endhighlight %}
+
+Running a command within `()` ensures that it runs in a subshell and so it would not exit the current shell and your build will work just like earlier.
+
+#### Changes with the *export* command:
+
+The `export` command will now cause environment variables to be set for all the commands in the stage. Let's look at an example again:
+
+{% highlight bash %}
+$ export RAILS_ENV=production; bundle exec rake assets:precompile
+$ bundle exec rake spec:smokes
+{% endhighlight %}
+
+This will work just fine in today's case as the RAILS_ENV will be unset when running the *bundle exec rake spec:smokes* command. But when the bash session will be persisted across the stage, you may have to unset the RAILS_ENV variable before running the smoke tests. You can do so by adding an unset command before running the smoke command:
+
+{% highlight bash %}
+$ export RAILS_ENV=production; bundle exec rake assets:precompile; unset RAILS_ENV
+$ bundle exec rake spec:smokes
+{% endhighlight %}
+
+These are just a few examples for you to get an idea of the impact the changes may have on your build. You can make these changes right away and your build should continue to work just fine. Incase you don't get a chance to update your configuration, we will run a migration making a best attempt to make sure your build continues to work but we may not be able to do so if you have complex build commands. If you have any doubts or problems with the changes coming in please feel free to comment below or get in [touch with us]({{ site.link.contact_us }}).
+

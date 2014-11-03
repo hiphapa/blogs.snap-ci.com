@@ -12,7 +12,7 @@ While isolation is good, this behaviour was often confusing. We heard from quite
 
 We thought it was perfectly reasonable that you would expect commands in your build environment to work as they do on your local information. So we have decided to change the behaviour in Snap to better match your expectations!
 
-This change may affect your existing builds if you are changing the state of your shell by using the internal commands like *cd*, *export* or *exit*. If you want to preserve the old behaviour, an easy way to do so is to just run these internal commands in a [subshell](http://www.gnu.org/software/bash/manual/html_node/Command-Grouping.html). 
+> This change may affect your existing builds if you are changing the state of your shell by using the internal commands like *cd*, *export* or *exit*. If you want to preserve the old behaviour, an easy way to do so is to just run these internal commands in a [subshell](http://www.gnu.org/software/bash/manual/html_node/Command-Grouping.html).
 
 Following are some sample commands that you might have to change in your build configuration:
 

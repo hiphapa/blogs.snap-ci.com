@@ -1,20 +1,20 @@
 ---
 layout: post
-title:  "Changes to the way commands are run in Snap"
+title:  "A more shell-like environment to run your build"
 date:   2014-10-31
 author: Akshay Karle
 categories: announcements
 ---
 
-# tl;dr
+Snap's stages currently provide an isolated environment around every command that you run in them. This is done by executing each of your build commands in their own shell. What this means though is that any [internal commands](http://www.gnu.org/software/bash/manual/html_node/Bourne-Shell-Builtins.html#Bourne-Shell-Builtins) that you run in that command don't impact any following commands. 
 
-The Snap team will be making changes to run every Stage in it's own shell instead of running every command in it's own shell. We are letting you know in advance the changes that we will be making so that you can fix your build to accommodate these changes. These changes will go in effect on Wednesday, Nov 5th, 2014 around evening UTC. We will run a migration attempting to fix your build but for some complex commands this may not work and you may have to edit your configuration.
+While isolation is good, this behaviour was often confusing. We heard from quite a few of you who logged support tickets wondering why your attempts at doing things like `cd` and `export` did not take effect and work like they did on your machine. 
 
-# The long version
+We thought it was perfectly reasonable that you would expect commands in your build environment to work as they do on your local information. So we have decided to change the behaviour in Snap to better match your expectations!
 
-Right now every command runs in it's own shell. So any [internal commands](http://www.gnu.org/software/bash/manual/html_node/Bourne-Shell-Builtins.html#Bourne-Shell-Builtins) that you run in that command don't have any consequences on the subsequent commands. On a number of support requests and confusion of why every command is run in it's own shell we have decided to change this behaviour and run all commands for a stage in one shell.
+This change may affect your existing builds if you are changing the state of your shell by using the internal commands like *cd*, *export* or *exit*. If you want to preserve the old behaviour, an easy way to do so is to just run these internal commands in a [subshell](http://www.gnu.org/software/bash/manual/html_node/Command-Grouping.html). 
 
-This change may affect your existing builds if you are changing the state of your shell by using the internal commands like *cd*, *export* or *exit*. An easy way to make sure your builds continue to work is to just run these internal commands in a [subshell](http://www.gnu.org/software/bash/manual/html_node/Command-Grouping.html). Following are some sample commands that you might have to change in your build configuration:
+Following are some sample commands that you might have to change in your build configuration:
 
 #### Changes with the *cd* command:
 
@@ -34,7 +34,7 @@ $ run_something_else
 
 #### Changes with the *exit* command:
 
-The *exit* command will now cause your session to end. We've had cases where users entered the exit command to continue or fail their builds based on the exit status. Let's look at the following example used for the *heroku run* command:
+The *exit* command will now cause your session to end - and thus kill your stage! We've had cases where users entered the exit command to continue or fail their builds based on the exit status. Let's look at the following example used for the *heroku run* command:
 
 {% highlight bash %}
 $ buffer_file=/tmp/last_heroku_run; heroku run --app 'APP_NAME' 'YOUR_COMMAND; echo $?' | tee $buffer_file; exit `tail -1 $buffer_file`
@@ -66,5 +66,4 @@ $ export RAILS_ENV=production; bundle exec rake assets:precompile; unset RAILS_E
 $ bundle exec rake spec:smokes
 {% endhighlight %}
 
-These are just a few examples for you to get an idea of the impact the changes may have on your build. You can make these changes right away and your build should continue to work just fine. Incase you don't get a chance to update your configuration, we will run a migration making a best attempt to make sure your build continues to work but we may not be able to do so if you have complex build commands. If you have any doubts or problems with the changes coming in please feel free to comment below or get in [touch with us]({{ site.link.contact_us }}).
-
+These are just a few examples for you to get an idea of the impact the changes may have on your build. You can make these changes right away and your build should continue to work just fine. In case you don't get a chance to update your configuration, we will run a migration that make sure your builds continue to work exactly as they do today. This change will go in effect on Thursday, Nov 6th, 2014 around evening UTC. If you have any doubts or problems with the changes coming in please feel free to comment below or get in [touch with us]({{ site.link.contact_us }}).

@@ -18,7 +18,7 @@ Following are some sample commands that you might have to change in your build c
 
 #### Changes with the *cd* command:
 
-Changing the directory in one command will now change for every subsequent commands. Lets say you had a stage like:
+Changing the directory in one command will now change for all subsequent commands. Lets say you had a stage like:
 
 {% highlight bash %}
 $ cd some_dir && run_specs

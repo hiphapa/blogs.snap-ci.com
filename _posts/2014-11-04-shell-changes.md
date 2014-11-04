@@ -1,7 +1,7 @@
 ---
 layout: post
 title:  "A more shell-like environment to run your build"
-date:   2014-10-31
+date:   2014-11-04
 author: Akshay Karle
 categories: announcements
 ---

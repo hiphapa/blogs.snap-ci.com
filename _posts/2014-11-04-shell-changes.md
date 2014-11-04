@@ -36,7 +36,7 @@ Running a command within `()` ensures that it runs in a subshell and so the subs
 
 #### Changes with the *exit* command:
 
-The *exit* command will now cause your session to end - and thus kill your stage! We've had cases where users entered the exit command to continue or fail their builds based on the exit status. Let's look at the following example used for the *heroku run* command:
+The *exit* command will now cause your session to end - and thus kill your stage! We've had cases where users used *exit* to continue or fail their builds based on the exit status. Let's look at the following example used for the *heroku run* command:
 
 {% highlight bash %}
 $ buffer_file=/tmp/last_heroku_run; heroku run --app 'APP_NAME' 'YOUR_COMMAND; echo $?' | tee $buffer_file; exit `tail -1 $buffer_file`

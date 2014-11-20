@@ -1,0 +1,13 @@
+name: snappy blog title
+url: http://localhost
+pygments: true
+paginate: 4
+recent_posts: 4
+safe: false
+permalink: /blog/:year/:month/:day/:title/
+exclude: ['Gemfile', 'Gemfile.lock', 'vendor', 'README']
+include: ['assets']
+future: true
+link:
+  docs: http://staging-docs.snap-ci.com/
+  contact_us: https://staging.snap-ci.com/contact-us/

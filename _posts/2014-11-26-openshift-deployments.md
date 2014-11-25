@@ -1,9 +1,9 @@
 ---
 layout: post
 title:  "OpenShift Deployments"
-date:   2014-11-24
+date:   2014-11-26
 author: Kelvin Nicholson
-categories: how-to deployments
+categories: how-to deployments openshift
 ---
 
 Snap has built in support for several Platforms-as-a-Services(PAAS), yet it is surprisingly easy

@@ -1,7 +1,7 @@
 ---
 layout: post
 title:  "OpenShift Deployments"
-date:   2014-11-26
+date:   2014-11-25
 author: Kelvin Nicholson
 categories: how-to deployments openshift
 ---

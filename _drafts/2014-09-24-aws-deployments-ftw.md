@@ -6,7 +6,7 @@ author: Ketan Padegaonkar
 categories: announcements feature deployments
 ---
 
-"The cloud" has become almost a synonym for Amazon Web Services (AWS). Just like Snap is hosted on AWS, a lot of user users prefer to host their applications on AWS.
+"The cloud" has become almost a synonym for Amazon Web Services (AWS). Just like Snap is hosted on AWS, a lot of our users prefer to host their applications on AWS.
 
 Starting today, we would like to announce improved integration with AWS. We now let our users quickly and easily deploy to [S3](https://aws.amazon.com/s3/), [OpsWorks](https://aws.amazon.com/opsworks/) and [ElasticBeanstalk](https://aws.amazon.com/elasticbeanstalk/) at the click of a button.
 
@@ -25,6 +25,3 @@ AWS deployments paired with our deployment history feature tells you exactly wha
 
 
 Read more about the integration on our [documentation site](http://docs.snap-ci.com/deployments/aws-deployments/).
-
-
-

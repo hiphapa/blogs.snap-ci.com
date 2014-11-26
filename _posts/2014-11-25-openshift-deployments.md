@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  "OpenShift Deployments"
+title:  "OpenShift Deployments using Snap CI"
 date:   2014-11-25
 author: Kelvin Nicholson
 categories: how-to deployments openshift

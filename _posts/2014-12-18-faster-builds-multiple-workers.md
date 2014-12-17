@@ -1,7 +1,7 @@
 ---
 layout: post
 title:  "Warp speed, Scotty: Faster builds with multiple workers"
-date:   2014-12-15
+date:   2014-12-18
 author: Ketan Padegaonkar
 categories: announcements feature workers parallelism
 ---

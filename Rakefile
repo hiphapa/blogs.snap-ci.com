@@ -3,7 +3,7 @@ require 'yaml'
 
 desc "build all blogs"
 task :build do
-  sh("bundle exec jekyll build --config #{config_file_path}")
+  sh("bundle exec jekyll build --config #{config_file_path} #{'--drafts' if include_drafts?}")
 end
 
 desc "deploy the blogs"
@@ -23,4 +23,11 @@ def config_file_path
   error_message = 'Please set environment variable ENVIRONMENT=STAGING or PRODUCTION'
   raise error_message if env.nil? || !%w(STAGING PRODUCTION).include?(env.upcase)
   "_config_#{env.downcase}.yml"
+end
+
+def include_drafts?
+  env = ENV['ENVIRONMENT']
+  error_message = 'Please set environment variable ENVIRONMENT=STAGING or PRODUCTION'
+  raise error_message if env.nil? || !%w(STAGING PRODUCTION).include?(env.upcase)
+  env.upcase == 'STAGING'
 end

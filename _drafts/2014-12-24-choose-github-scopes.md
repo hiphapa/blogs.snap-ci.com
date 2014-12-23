@@ -1,7 +1,7 @@
 ---
 layout: post
-title:  "Less intrusive Snap"
-date:   2014-12-23
+title:  "Choose your Github access levels"
+date:   2014-12-24
 author: Akshay Karle
 categories: announcements feature
 ---

@@ -14,7 +14,6 @@ task :deploy do
   ENV['AWS_ACCESS_KEY_ID'] = ENV['S3_ACCESS_KEY']
   ENV['AWS_SECRET_ACCESS_KEY'] = ENV['S3_SECRET_KEY']
 
-  sh("aws s3 sync --acl public-read --delete --cache-control: 'max-age=7200, must-revalidate' _site/* s3://#{ENV['S3_BUCKET']}")
 
   items = (Dir["_site/**/*.*"] + Dir["_site/**/.*"]).map{|file| URI.encode(file.gsub(/^_site/, '')) }.flatten.sort
 
@@ -29,6 +28,7 @@ task :deploy do
     f.puts JSON.pretty_generate(invalidations)
   end
 
+  sh("aws s3 sync --acl public-read --delete --cache-control: 'max-age=7200, must-revalidate' _site/* s3://#{ENV['S3_BUCKET']}")
   sh("aws cloudfront create-invalidation --distribution-id #{ENV['CLOUDFRONT_DISTRIBUTION']} --invalidation-batch file://invalidation.json")
 end
 

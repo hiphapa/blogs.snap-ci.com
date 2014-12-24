@@ -7,3 +7,4 @@ sitemap.xml
 .DS_store
 .idea/
 vendor/bundle
+invalidation.json

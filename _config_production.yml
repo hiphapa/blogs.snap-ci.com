@@ -9,5 +9,5 @@ exclude: ['Gemfile', 'Gemfile.lock', 'vendor', 'README']
 include: ['assets']
 future: false
 link:
-  docs: http://docs.snap-ci.com/
+  docs: https://docs.snap-ci.com/
   contact_us: https://snap-ci.com/contact-us/

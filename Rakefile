@@ -1,5 +1,8 @@
 #!/usr/bin/env rake -f
 require 'yaml'
+require 'json'
+require 'securerandom'
+require 'uri'
 
 desc "build all blogs"
 task :build do
@@ -7,14 +10,26 @@ task :build do
 end
 
 desc "deploy the blogs"
-task :deploy => [:build] do
-  File.open('s3.cfg', 'w') do |f|
-    f.puts "[default]"
-    f.puts "access_key = #{ENV['S3_ACCESS_KEY']}"
-    f.puts "secret_key = #{ENV['S3_SECRET_KEY']}"
+task :deploy do
+  ENV['AWS_ACCESS_KEY_ID'] = ENV['S3_ACCESS_KEY']
+  ENV['AWS_SECRET_ACCESS_KEY'] = ENV['S3_SECRET_KEY']
+
+  sh("aws s3 sync --acl public-read --delete --cache-control: 'max-age=7200, must-revalidate' _site/* s3://#{ENV['S3_BUCKET']}")
+
+  items = (Dir["_site/**/*.*"] + Dir["_site/**/.*"]).map{|file| URI.encode(file.gsub(/^_site/, '')) }.flatten.sort
+
+  File.open('invalidation.json', 'w') do |f|
+    invalidations = {
+      :Paths => {
+        :Quantity => items.count,
+        :Items => items
+      },
+      :CallerReference => ENV['SNAP_CI'] ? "#{ENV['SNAP_PIPELINE_COUNTER']}-#{ENV['SNAP_COMMIT_SHORT']}" : SecureRandom.hex
+    }
+    f.puts JSON.pretty_generate(invalidations)
   end
 
-  sh("s3cmd sync --config s3.cfg --verbose --acl-public --delete-removed --no-preserve --add-header='Cache-Control: max-age=7200, must-revalidate' _site/* s3://#{ENV['S3_BUCKET']}")
+  sh("aws cloudfront create-invalidation --distribution-id #{ENV['CLOUDFRONT_DISTRIBUTION']} --invalidation-batch file://invalidation.json")
 end
 
 private

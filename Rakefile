@@ -25,6 +25,7 @@ task :deploy do
   end
 
   sh("aws s3 sync --recursive --acl public-read --delete --cache-control 'max-age=7200, must-revalidate' _site/ s3://#{ENV['S3_BUCKET']}")
+  sh("aws configure set preview.cloudfront true")
   sh("aws cloudfront create-invalidation --distribution-id #{ENV['CLOUDFRONT_DISTRIBUTION']} --invalidation-batch file://invalidation.json")
 end
 

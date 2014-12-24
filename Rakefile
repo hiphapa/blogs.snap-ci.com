@@ -11,10 +11,6 @@ end
 
 desc "deploy the blogs"
 task :deploy do
-  ENV['AWS_ACCESS_KEY_ID'] = ENV['S3_ACCESS_KEY']
-  ENV['AWS_SECRET_ACCESS_KEY'] = ENV['S3_SECRET_KEY']
-
-
   items = (Dir["_site/**/*.*"] + Dir["_site/**/.*"]).map{|file| URI.encode(file.gsub(/^_site/, '')) }.flatten.sort
 
   File.open('invalidation.json', 'w') do |f|

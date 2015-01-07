@@ -22,4 +22,4 @@ Should you decide to setup a public or a private repository, Snap will progressi
 
 We hope that this addresses the concerns that a lot of you have expressed. After all, we cannnot compromoise privileges we haven't been granted.
 
-If you are existing Snap user and would like to change the access level you have granted Snap [GitHub scopes](https://snap-ci.com/choose_github_scopes) and select the appropriate scope. A note of caution, however. If you already have any builds that you setup- they will start to break if you reduce your scope all the way down.You can check the builds you've setup by visiting the [repository settings page](https://snap-ci.com/settings/repositories).
+If you are existing Snap user and would like to change the access level you have granted Snap, you can now [change to using the appropriate scope](https://snap-ci.com/choose_github_scopes). A note of caution, however. If you already have any builds that you setup- they will start to break if you reduce your scope all the way down.You can check the builds you've setup by visiting the [repository settings page](https://snap-ci.com/settings/repositories).

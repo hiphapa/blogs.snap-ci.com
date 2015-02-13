@@ -6,11 +6,13 @@ author: Ketan Padegaonkar
 categories: announcements feature workers
 ---
 
-The standard workers on Snap come with 2GB of memory and 2 cores, while this is good enough for most users. Some users have had the need to use more memory or cpu cores for some of their tests that require using multiple browsers, jvms and android emulators.
+Your builds on Snap run on workers. These standard sized workers come with 2GB of memory and 2 processing cores. This is sufficient for most builds. Some users, however, need additional memory or cpu cores for some of their tests. Typically these are for tests that require using multiple browsers, larger JVMs and Android emulators. Other suites and build processes might benefit from the additional compute horsepower that comes with additional processors.
 
-To follow up with our story about using multiple workers to get [faster feedback]({% post_url 2014-12-19-faster-builds-multiple-workers %}). Starting today, we would now like to announce the ability to run your build using bigger sized workers.
+Today's announcement is a follow up to our story about using multiple workers to get [faster feedback]({% post_url 2014-12-19-faster-builds-multiple-workers %}). Starting today, you get to run your builds on workers as large as you might need.
 
-For users on the trial plan, small team plan and small business plans - you will now have the ability to run your build on bigger sized workers. Read more about it on our [docs site]({{ site.link.docs }}workers/configuring-workers/).
+The way this works is when you purchase multiple workers, you can either split your workload across them or put them together to get double, quadruple (or even larger!) workers. This will apply for users using the free trial or on any plan that allocates more than one worker. Of our standard plans, the small team plan and small business plans will have this ability - though we also sell additional workers to meet your needs. 
+
+You can read more about this feature in our [documentation]({{ site.link.docs }}workers/configuring-workers/).
 
 ![bigger workers](/assets/images/screenshots/bigger-workers/bigger-worker-configuation.png){: .screenshot .big}
 

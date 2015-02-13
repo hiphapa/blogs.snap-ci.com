@@ -1,7 +1,7 @@
 ---
 layout: post
 title:  "Faster builds with bigger sized workers"
-date:   2015-02-04
+date:   2015-02-13
 author: Ketan Padegaonkar
 categories: announcements feature workers
 ---

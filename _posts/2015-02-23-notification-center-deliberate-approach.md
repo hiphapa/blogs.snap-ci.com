@@ -1,7 +1,7 @@
 ---
 layout: post
 title:  "A more deliberately designed notification center"
-date:   2015-02-18
+date:   2015-02-23
 author: Badri Janakiraman
 categories: announcements
 ---

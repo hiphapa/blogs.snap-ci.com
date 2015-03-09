@@ -50,6 +50,7 @@ PLATFORMS
 
 DEPENDENCIES
   builder
+  bundler
   compass
   jekyll
   jekyll-asset-pipeline

@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  "Meet Snap developer Fernando"
+title:  "Meet a Snap developer: Fernando"
 date:   2015-03-12
 author: Suzie Prince
 categories: announcements
@@ -11,7 +11,7 @@ Fernando Junior, a developer usually based in Recife, Brazil, but currently in P
 
 <img src="/assets/images/screenshots/Fernando2.jpeg" class="image" width="165" height="209"/>
 
-*When did you join Snap?*
+#### When did you join Snap?
 
 "I joined Snap in January 2014. I started right after I graduated college in Brazil. Now that I'm with Snap, I basically do everything that (product manager) Badri Janakiraman doesn't."
 

@@ -1,7 +1,7 @@
 ---
 layout: post
 title:  "Meet Snap developer Fernando"
-date:   2015-02-25
+date:   2015-03-12
 author: Suzie Prince
 categories: announcements
 ---
@@ -9,20 +9,25 @@ categories: announcements
 ### Meet Fernando Junior
 Fernando Junior, a developer usually based in Recife, Brazil, but currently in Pune, India, tells us all about life on the Snap team.
 
-![Fernando](/assets/images/Fernando.png){: .screenshot .big}
+![Fernando](/assets/images/screenshots/Fernando2.jpeg){: .screenshot .big}
 
-**When did you join Snap?**
+*When did you join Snap?*
+
 "I joined Snap in January 2014. I started right after I graduated college in Brazil. Now that I'm with Snap, I basically do everything that (product manager) Badri Janakiraman doesn't."
 
-**So what's an average day look like for you?**
+*So what's an average day look like for you?*
+
 "I'm always working on something. Most of the time it goes well, but something might happen: for example, a customer or trial user has a problem. We found a bug. Heroku goes down. So we get interrupted. That's actually an average day!"
 
-**What do you like about Snap?**
+*What do you like about Snap?*
+
 "I was able to set up the entire dev environment on a Monday in 30 minutes. Everything was ready, automated, the scripts and the deployment pipelines. Everything."
 
-**Where would you like to see Snap go?**
+*Where would you like to see Snap go?*
+
 "I want Snap to be a well-known, reliable service for people who don't want to get their hands dirty to achieve continuous delivery. I want to welcome new users who are learning about automatic tests and continuous integration: Snap can be the playground for them to learn more about continuous delivery."
 
-**What's your favorite part of your workday?**
+*What's your favorite part of your workday?*
+
 "I really enjoy getting feedback from clients. It's nice when the client is very happy, and then two weeks later he's buying it. It's very rewarding."
 

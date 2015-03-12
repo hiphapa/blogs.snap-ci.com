@@ -9,7 +9,7 @@ categories: announcements
 ### Meet Fernando Junior
 Fernando Junior, a developer usually based in Recife, Brazil, but currently in Pune, India, tells us all about life on the Snap team.
 
-![Fernando](/assets/images/screenshots/Fernando2.jpeg){: .screenshot .big}
+<img src="/assets/images/screenshots/Fernando2.jpeg" class="image" width="165" height="209"/>
 
 *When did you join Snap?*
 

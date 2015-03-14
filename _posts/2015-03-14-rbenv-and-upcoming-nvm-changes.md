@@ -14,6 +14,6 @@ Starting today we would like to announce that we've rolled out to using [rbenv](
 
 This will improve the experience for users who are using to using rbenv or rvm on their local development machines. Users will no longer need to use `sudo` to manage rubygems anymore. For users who have any `sudo gem` commands in their tasks, we have already migrated those tasks to remove the `sudo` prefix on them.
 
-We will soon be rolling out a similar change to move over to using [nvm](https://github.com/creationix/nvm) for managing nodejs and iojs versions.
+We will soon be rolling out a similar change to move over to using [nvm](https://github.com/creationix/nvm) for managing [nodejs](https://nodejs.org) and [iojs](https://io.js) versions.
 
 If you have any comments or tips to help us improve, let us know by droppping a comment below or [contact us]({{ site.link.contact_us }}) if you have any questions.

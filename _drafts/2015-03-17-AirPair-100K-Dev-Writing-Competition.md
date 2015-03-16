@@ -14,7 +14,7 @@ categories: announcements
 >Snap: $500 prize                                                                                                                                                 
 >Topic: Techniques for getting fast feedback in continuous integration or continuous delivery setups
 
->Mingle: $500 prize
+>Mingle: $500 prize  
 >Topic: Why developers should be involved in business decisions
 
 

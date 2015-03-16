@@ -11,8 +11,7 @@ categories: announcements
 [Mingle](http://www.thoughtworks.com/mingle/) and Snap are excited to announce they will award $500 prizes for the best blog posts on specific topics for [AirPair’s developer writing competition](https://www.airpair.com/100k-writing-competition). Blog posts are judged by community ratings and number of social shares they receive.
 
 
->### Snap: $500 prize
->### Topic: Techniques for getting fast feedback in continuous integration or continuous delivery setups
+>### Snap: $500 prize                                                                                                                                                 Topic: Techniques for getting fast feedback in continuous integration or continuous delivery setups
 
 >### Mingle: $500 prize
 >### Topic: Why developers should be involved in business decisions

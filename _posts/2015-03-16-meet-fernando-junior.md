@@ -1,7 +1,7 @@
 ---
 layout: post
 title:  "Meet a Snap developer: Fernando"
-date:   2015-03-12
+date:   2015-03-16
 author: Suzie Prince
 categories: announcements
 ---

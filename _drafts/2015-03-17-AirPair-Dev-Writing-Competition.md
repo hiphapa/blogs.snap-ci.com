@@ -10,8 +10,8 @@ categories: announcements
 
 ![airpair](/assets/images/screenshots/airpairSNAP.jpeg){: .screenshot .big}
 
->Snap: $500 prize
->Topic: Techniques for getting fast feedback in continuous integration or continuous delivery setups
+> Snap: $500 prize
+> Topic: Techniques for getting fast feedback in continuous integration or continuous delivery setups
 
 >Mingle: $500 prize  
 >Topic: Why developers should be involved in business decisions

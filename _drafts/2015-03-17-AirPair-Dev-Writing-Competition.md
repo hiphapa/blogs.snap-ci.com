@@ -6,12 +6,11 @@ author: Jen Quraishi
 categories: announcements
 ---
 
-![](/assets/images/screenshots/airpairSNAP.jpeg){: .screenshot .big}
-
 [Mingle](http://www.thoughtworks.com/mingle/) and Snap are excited to announce they will award $500 prizes for the best blog posts on specific topics for [AirPair’s developer writing competition](https://www.airpair.com/100k-writing-competition). Blog posts are judged by community ratings and number of social shares they receive.
 
+![airpair](/assets/images/screenshots/airpairSNAP.jpeg){: .screenshot .big}
 
->Snap: $500 prize                                                                                                                                                 
+>Snap: $500 prize
 >Topic: Techniques for getting fast feedback in continuous integration or continuous delivery setups
 
 >Mingle: $500 prize  
@@ -26,4 +25,3 @@ Submit your posts here: [https://www.airpair.com/100k­writing­competition](htt
 And don’t forget to tell us about your posts so we can share them with our audiences too. This is a great opportunity to stretch your skillset AND gain a following while winning cash. Win-win-win.
 
 Never done social authoring before? Got [questions](https://www.airpair.com/100k-writing-competition/faq)? AirPair has an [easy how-to](https://www.airpair.com/social-authoring) to help you begin. Looking forward to reading all your awesome contributions!
-

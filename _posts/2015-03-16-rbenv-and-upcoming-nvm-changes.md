@@ -12,13 +12,13 @@ This was always an inconvenience for some of our users while they waited a few d
 
 Starting today we would like to announce that Snap will use [rbenv](https://github.com/sstephenson/rbenv) to install rubies on your build machines.
 
-# How will this impact users
+# How will this impact users?
 
 This will improve the experience for users who are used to using rbenv or rvm on their local development machines. Users will no longer need to use `sudo` to manage rubygems anymore.
 
 For users who have any `sudo gem` commands in their tasks, we have already migrated those tasks to remove the `sudo` prefix on them.
 
-# What will happen when new rubies are released and available.
+# What will happen when new rubies are released and available?
 
 As and when new rubies are released and available, they will automatically be available to Snap users. If a binary is not available, then you may get in touch with us, and we'll make it available ASAP.
 

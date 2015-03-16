@@ -12,14 +12,13 @@ categories: announcements
 
 [Mingle](http://www.thoughtworks.com/mingle/) and Snap are excited to announce they will award $500 prizes for the best blog posts on specific topics for [AirPair’s developer writing competition](https://www.airpair.com/100k-writing-competition). Blog posts are judged by community ratings and number of social shares they receive.
 
-*Snap*: $500 prize
 
-*Topic*: Techniques for getting fast feedback in continuous integration or continuous delivery setups
+### Snap ###: $500 prize
+### Topic ###: Techniques for getting fast feedback in continuous integration or continuous delivery setups
 
 
-*Mingle*: $500 prize
-
-*Topic*: Why developers should be involved in business decisions
+### Mingle ###: $500 prize
+### Topic ###: Why developers should be involved in business decisions
 
 
 No matter what you decide to write about, you should consider entering the competition because AirPair’s giving out [$100,000 in total prize money](https://www.airpair.com/100k-writing-competition). This includes guaranteed prizes: if your post on any topic gets 2500 shares (combined FB, Twitter, Google+, and LinkedIn), you automatically win $1500! Submissions close May 30th, 2015, so get started—the earlier you submit, the more time your post has to collect reviews and shares.

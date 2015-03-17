@@ -18,7 +18,7 @@ This will improve the experience for users who are used to using rbenv/rvm/nvm o
 
 For users who have any `sudo [gem|npm]` commands in their tasks, we have already migrated those tasks to remove the `sudo` prefix on them.
 
-# What will happen when new rubies (or nodejs versions) are released and available?
+# What will happen when new ruby or node versions are released and available?
 
 As and when new versions are released and available, they will automatically be available to Snap users. If a binary is not available, then you may get in touch with us, and we'll make it available ASAP.
 

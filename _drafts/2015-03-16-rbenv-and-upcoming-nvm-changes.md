@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  "rbenv and upcoming nvm changes"
+title:  "rbenv and nvm changes"
 date:   2015-03-16
 author: Ketan Padegaonkar
 categories: announcements
@@ -14,16 +14,12 @@ Starting today we would like to announce that Snap will use [rbenv](https://gith
 
 # How will this impact users?
 
-This will improve the experience for users who are used to using rbenv or rvm on their local development machines. Users will no longer need to use `sudo` to manage rubygems anymore.
+This will improve the experience for users who are used to using rbenv/rvm/nvm on their local development machines. Users will no longer need to use `sudo` to manage packages anymore.
 
-For users who have any `sudo gem` commands in their tasks, we have already migrated those tasks to remove the `sudo` prefix on them.
+For users who have any `sudo [gem|npm]` commands in their tasks, we have already migrated those tasks to remove the `sudo` prefix on them.
 
-# What will happen when new rubies are released and available?
+# What will happen when new rubies (or nodejs versions) are released and available?
 
-As and when new rubies are released and available, they will automatically be available to Snap users. If a binary is not available, then you may get in touch with us, and we'll make it available ASAP.
-
-# What about nvm?
-
-We will soon be rolling out a similar change to move over to using [nvm](https://github.com/creationix/nvm) for managing [nodejs](https://nodejs.org) and [iojs](https://io.js) versions.
+As and when new versions are released and available, they will automatically be available to Snap users. If a binary is not available, then you may get in touch with us, and we'll make it available ASAP.
 
 If you have any comments or tips to help us improve, let us know by droppping a comment below or [contact us]({{ site.link.contact_us }}) if you have any questions.

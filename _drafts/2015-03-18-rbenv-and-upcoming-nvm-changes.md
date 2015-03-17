@@ -1,7 +1,7 @@
 ---
 layout: post
 title:  "rbenv and nvm changes"
-date:   2015-03-16
+date:   2015-03-18
 author: Ketan Padegaonkar
 categories: announcements
 ---

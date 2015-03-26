@@ -5,39 +5,43 @@ date:   2015-03-25
 author: Akshay Karle
 ---
 
-Snap is a hosted Continuous Integration and Delivery service that allows users to setup their build pipelines for their repositories in GitHub. We provide users with the build machines that run these pipelines. Anyone setting up the pipeline has an expectation that as soon as they commits their code to GitHub, it starts building immediately on Snap. In order to do so we have to make sure that our build machines are always prepared and ready to build as soon as we receive any build requests from GitHub. These build machines should also be exactly identical to each other and should have the latest languages and libraries required by the wide customer base of Snap. In order to run a sustainable business it should also be easy to run and maintain these build machines without incurring a significant cost for the hardware.
+Snap is a hosted Continuous Integration and Delivery service that allows users to setup their build pipelines for repositories in GitHub. We provide users with the build machines that run these pipelines. Anyone setting up the pipeline has an expectation that as soon as they commit their code to GitHub, it starts building immediately on Snap. In order to do so we have to make sure that our build machines are always prepared and ready to build as soon as we receive any build requests from GitHub. These build machines should also be exactly identical to each other and should include the latest languages, databases and libraries required by the wide customer base of Snap. In addition to all this, we also need to run a sustainable business so it should be easy to run and maintain these build machines without incurring a significant cost for the hardware.
 
-In order to meet all these requirements of the build machines we chose to use containers as build machines. Back when Snap started there were only a few major container based virtualization technologies available for linux -
+In order to meet all these requirements of the build machines we chose to use containers as build machines instead of Virtual machines. Back when Snap started there were only a few major container based virtualization technologies available for linux -
 
 * [LXC](https://linuxcontainers.org/)
 * [OpenVZ](https://openvz.org/Main_Page)
 
-The development for LXC was still in full swing back in 2012 when Snap started but it wasn't production ready. So we decided to go with OpenVZ which proved to be quite stable. Over the time we have seen a lot of uproar in the evolving container technologies -
+The development for LXC was still in full swing back in 2012 when Snap started but it wasn't production ready. So we decided to go with OpenVZ which proved to be quite stable for a long time for us. After 3 years, we wanted to re-visit our choice of container technologies since OpenVZ is still running on 2.6.x kernels and has first class support just for RHEL 6.x hosts. So we decided to explore the other container technologies since there has been massive development happening with container technologies. In this blog we present our views about these new container technologies and our choice of Container technology and why we chose that.
+
+Over the time we have seen a lot of uproar in the evolving container technologies -
 
  * [LXC became production ready](https://lwn.net/Articles/587545/)
  * [Docker](https://www.docker.com/)
  * [Rocket](https://github.com/coreos/rocket)
 
- After 3 years, we wanted to re-visit our choice of container technologies since OpenVZ is still running on 2.6.x kernels and has first class support just for RHEL 6.x hosts. So we decided to explore the other container technologies and in this blog we present our views about these new container technologies.
+Both docker and rocket are application containers. As the [docker website](https://www.docker.com/) quotes on What is Docker?
 
-Both docker and rocket are application containers. As the [docker website](https://www.docker.com/) quotes on What is Docker? "An open platform for distributed applications". The intention of these technologies is to deploy applications as a containers and hence by design they don't have a few things that you take for granted in a normal Operating System. While they are similar to LXC or OpenVZ containers or virtual machines, they are quite different in the ways they function -
+> "An open platform for distributed applications"
+
+The intention of these technologies is to deploy applications as a containers and hence by design they don't have a few things that you take for granted in a normal Operating System. While they are similar to LXC or OpenVZ containers or virtual machines, they are quite different in the ways they function -
 
 ## Meant to be run a single service
 
-Whenever a docker container is launched it runs a single process which is usually your application. This very different from the traditional OS where you have multiple services running on the same OS. But this approach plays very well when you want to deploy a distributed, multi-app system giving development teams the freedom to package their own applications as a single deployable container and the Ops teams the freedom of deploying the container on different distros of their choice as well scaling the different services (as every service is a container) as per the needs. The structure of the system is such that you have the different components running as different containers which then talk to each other.
+Whenever a docker container is launched it runs a single process which is usually your application. This very different from the traditional OS where you have multiple services running on the same OS. But this approach plays very well when you want to deploy a distributed, multi-app system giving development teams the freedom to package their own applications as a single deployable container and the Ops teams the freedom of deploying the container on different distros of their choice as well scaling the different services (as every service is a container) as per the needs. The structure of the system is such that you have the different components running as different containers which then talk to each other over well defined APIs.
 
-To explain how dockerization of systems works, let's take an example of a 3 tier architecture in web development which has a `Postgres` data tier, a `Ruby on Rails` application tier and an `Nginx` as the front-end/presentation tier. When you would like to deploy this architecture as docker containers you would typically have a different container for each tier. So in this case you would create a container image for the Postgres database, another image for the Ruby on Rails server and one more for the Apache web server. You then deploy these images independently creating multiple containers each representing a single service.
+To explain how dockerization of systems typically works, let's take an example of a 3 tier architecture in web development which has a `Postgres` data tier, a `Ruby on Rails` application tier and an `Nginx` as the front-end/presentation tier. When you would like to deploy this architecture as docker containers you would typically have a different container for each tier. So in this case you would create a container image for the Postgres database, another image for the Ruby on Rails server and one more for the Apache web server. You then deploy these images independently creating multiple containers each representing a single service.
 
 ![typical 3-tier architecture with docker containers](/assets/images/screenshots/snap-containers/3-tier-architecture-using-docker.jpg){: .screenshot .big}
 
- In the simplest case in the traditional approach you would put the database, the rails server and the apache server on the same Operating System.
+ In the simplest case with the traditional approach you would put the database, the rails server and the apache server on the same Operating System.
 
 ## Missing init (PID 1) process
 
-One of the duties of the init process in Linux is to collect the exit status of any orphaned processes when they die there-by ensuring that there are no orphaned zombie processes left behind. By default, most of the base images for docker don't have the init (PID 1) process and when you run a docker container it will simply run your application and it becomes your application's responsibility to manage the lifecycle of any child processes it creates during the run since there is no init process to do so. To workaround this problem of having to manage the child processes many users have created docker images with an init process. To read more about this problem and the workarounds have a look at this [blog post](https://blog.phusion.nl/2015/01/20/docker-and-the-pid-1-zombie-reaping-problem/).
+One of the duties of the init (PID 1) process in Linux is to collect the exit status of any orphaned processes when they die there-by ensuring that there are no orphaned zombie processes left behind. By default, most of the base images for docker don't have the init process and when you run a docker container it will simply run your application and it becomes your application's responsibility to manage the lifecycle of any child processes it creates during the run since there is no init process to do so. To workaround this problem of having to manage the orphaned child processes many users have created docker images with an init process. To read more about this problem and the workarounds have a look at this [blog post](https://blog.phusion.nl/2015/01/20/docker-and-the-pid-1-zombie-reaping-problem/).
 
 
-Both these approaches differentiate application containers like docker from the traditional Operating Systems. OpenVZ and LXC containers are more like Operating System containers which try to emulate a complete operating system like environment but share the kernel of the host machine.
+Both these approaches differentiate application containers like docker from the traditional Operating Systems. OpenVZ and LXC containers on the other hand are Operating System containers which try to emulate a complete operating system like environment but share the kernel of the host machine.
 
 Another aspect of having a CI environment is that many power users would like to customise their builds, install different libraries not available on Snap. In order to support this Snap allows users to run arbitrary commands in the build machines with sudo access. So we really wanted to make sure that a root user in the container doesn't break out of the container and become the root user on the host machine. Below we list some of security concerns with docker containers -
 
@@ -51,9 +55,7 @@ User namespaces gives the ability to run processes and access filesystems as a r
 
 ## Isolation using SELinux or AppArmor
 
-You can definitely work on hardening your container security by using systems like TOMOYO, AppArmor, SELinux, GRSEC, etc. with docker. They allow you to define policies and rules that determines what the users inside the container can do. This is mostly a whitelisting process and this approach definitely builds security when you know exactly what the application is going to do and what resources and capabilities it needs access for. You can read more about security using these systems on the [docker security doc](https://docs.docker.com/articles/security/).
-
-So for e.g. if you know that an application needs access to a particular files or other resources, you can whitelist that program.
+You can definitely work on hardening your container security by using systems like TOMOYO, AppArmor, SELinux, GRSEC, etc. with docker. They allow you to define policies and rules that determines what the users inside the container can do. This is mostly a whitelisting process and this approach definitely builds security when you know exactly what the application is going to do and what resources and capabilities it needs access for. So for e.g. if you know that an application needs access to a particular files or other resources, you can whitelist that program. You can read more about security using these systems on the [docker security doc](https://docs.docker.com/articles/security/).
 
 # What does all this mean for Snap?
 

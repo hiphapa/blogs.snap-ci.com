@@ -78,7 +78,7 @@ The Docker daemon runs as root. Even the Docker containers created need to be cr
 
 > Today, Docker does not directly support user namespaces, but they may still be utilized by Docker containers on supported kernels, by directly using the clone syscall, or utilizing the 'unshare' utility.
 
-User namespaces gives the ability to run processes and access filesystems as a root user in the containers which can be mapped to a non-root user on the host. If a root user on a container were to find an exploit that allows them into the host, that user won't be root on the host machine and won't cause as much damage as a root user on the host. Docker currently does not support user namespacing, Snap therefore was not in a position to use Docker containers to run untrusted code. If we were to offer Docker containers as build machines, we would have to take away the ability to allow root access.
+User namespaces gives the ability to run processes and access filesystems as a root user in the containers which can be mapped to a non-root user on the host. If a root user on a container were to find an exploit that allows them into the host, that user won't be root on the host machine and won't cause as much damage as a root user on the host. Docker currently does not support user namespacing, Snap therefore was not in a position to use Docker containers to run untrusted code. If we were to offer Docker containers as build machines, we would have to take away the ability to allow root access. To read more about what User namespaces have a look at [this blog by Serge Hallyn](https://s3hh.wordpress.com/2012/05/10/user-namespaces-available-to-play/).
 
 ### Isolation using SELinux or AppArmor
 
@@ -90,6 +90,6 @@ We needed a build environment that would be capable of running multiple services
 
 Docker containers are, by default, quite secure; as long as processes inside the containers as are running as non-root users. But a lot of our users need to run as a root user in the container. So we couldn't really use Docker for running users builds.
 
-SELinux or AppArmor was also not an option to secure Docker containers, because it is not possible, ahead of time to whitelist the resources a users builds may need. What Snap really needs is complete isolation between build machines, with the ability to do UID namespacing. LXC with version 1.0.0 announced last year does have support for unprivileged containers with User namespaces. This would now allow us to now run Docker containers inside LXC containers to make up for the missing user namespaces in Docker.
+SELinux or AppArmor was also not an option to secure Docker containers, because it is not possible, ahead of time to whitelist the resources a users builds may need. What Snap really needs is complete isolation between build machines, with the ability to do UID namespacing. LXC with [version 1.0.0 announced last year](https://lwn.net/Articles/587545/) does have support for [unprivileged containers](https://www.stgraber.org/2014/01/17/lxc-1-0-unprivileged-containers/) with User namespaces. This would now allow us to now run Docker containers inside LXC containers to make up for the missing user namespaces in Docker.
 
 In the near future we may move to LXC which suites our needs for running a full OS container as a non-root user there-by meeting our user and security needs.

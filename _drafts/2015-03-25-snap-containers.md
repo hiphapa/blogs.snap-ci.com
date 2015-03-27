@@ -1,64 +1,95 @@
 ---
 layout: post
-title:  "Why Snap can’t simply use Docker containers to run your builds?"
+title:  "Why Snap can't simply use Docker containers to run your builds?"
 date:   2015-03-25
 author: Akshay Karle
 ---
 
-Snap is a hosted Continuous Integration and Delivery service that allows users to setup their build pipelines for repositories in GitHub. We provide users with the build machines that run these pipelines. Anyone setting up the pipeline has an expectation that as soon as they commit their code to GitHub, it starts building immediately on Snap. In order to do so we have to make sure that our build machines are always prepared and ready to build as soon as we receive any build requests from GitHub. These build machines should also be exactly identical to each other and should include the latest languages, databases and libraries required by the wide customer base of Snap. In addition to all this, we also need to run a sustainable business so it should be easy to run and maintain these build machines without incurring a significant cost for the hardware.
+# History and background
 
-In order to meet all these requirements of the build machines we chose to use containers as build machines instead of Virtual machines. Back when Snap started there were only a few major container based virtualization technologies available for linux -
+Snap is a hosted Continuous Integration and Delivery service that allows users to setup their build pipelines for repositories hosted on [GitHub](https://github.com). We provide users with virtual machines that run these builds.
+
+Users that setup the builds expect the builds to start as soon as they push their code to GitHub. In order to achieve this goal, we make sure that our build machines are always prepared and ready to build as soon as we receive any build requests from GitHub. These build machines should also be identical to each other and should include the latest languages, databases and libraries required by the wide customer base that Snap has. We also need to run a sustainable business so it should be easy to run and maintain these build machines without incurring a significant hardware cost.
+
+While virtualization technologies like [vmware](http://www.vmware.com/), [virtualbox](https://www.virtualbox.org/) and [Xen](http://www.xenproject.org/) provide full virtualization and can run multiple operating systems and different kernel versions, containers on the other hand use a single Linux kernel and therefore can run only Linux. All containers share the same kernel. It does not have the overhead of a true hypervisor, it is very fast and efficient.
+
+Since we wanted to offer a fast, linux based CI system to our end users, containers seemed like the way forward as it met all our requirements. Back in early 2012 when Snap started there were only a few major container based virtualization technologies available for linux -
 
 * [LXC](https://linuxcontainers.org/)
 * [OpenVZ](https://openvz.org/Main_Page)
+* [Linux-VServer](https://en.wikipedia.org/wiki/Linux-VServer)
 
-The development for LXC was still in full swing back in 2012 when Snap started but it wasn't production ready. So we decided to go with OpenVZ which proved to be quite stable for a long time for us. After 3 years, we wanted to re-visit our choice of container technologies since OpenVZ is still running on 2.6.x kernels and has first class support just for RHEL 6.x hosts. So we decided to explore the other container technologies since there has been massive development happening with container technologies. In this blog we present our views about these new container technologies and our choice of Container technology and why we chose that.
+LXC was still in its infancy and development was in full swing back in 2012 when Snap started. Linux-VServer although stable was running on a very old kernel and there was not very much of community support available at the time. OpenVZ had been stable for quite a few years and had most of the features that Snap needed.
 
-Over the time we have seen a lot of uproar in the evolving container technologies -
+Today, after 3 years, we wanted to re-visit our choice of container technologies. OpenVZ is still running on 2.6.32 kernel and has first class support for RHEL/CentOS 6, and there are a few other container technologies that we've seen (docker, rocket).
+
+Docker has gained significant popularity in the last few months, and we've been getting numerous requests to allow users to use docker to build and test docker containers. This is not something that OpenVZ, our current container technology offered; until the last week.
+
+LXC and Docker as container technologies have improved improved significantly over the last 1-2 years, and we took this opportunity to explore them. In this article we present our views about these new container technologies and our reasons for choosing the container technology going forward.
+
+# As things stand today
+
+Over the past 3 years, we have seen a lot of uproar in the evolving container technologies -
 
  * [LXC became production ready](https://lwn.net/Articles/587545/)
- * [Docker](https://www.docker.com/)
- * [Rocket](https://github.com/coreos/rocket)
+ * [Docker](https://www.docker.com/) becomes [production ready](https://blog.docker.com/2014/06/its-here-docker-1-0/)
+ * [Rocket](https://github.com/coreos/rocket), not yet production ready
 
-Both docker and rocket are application containers. As the [docker website](https://www.docker.com/) quotes on What is Docker?
+# Application Containers and how they are different from an Operating System
 
-> "An open platform for distributed applications"
+Both docker and rocket are application containers. As the [docker website](https://www.docker.com/) quotes on "What is Docker?""
 
-The intention of these technologies is to deploy applications as a containers and hence by design they don't have a few things that you take for granted in a normal Operating System. While they are similar to LXC or OpenVZ containers or virtual machines, they are quite different in the ways they function -
+> "Docker is an open platform for developers and sysadmins to build, ship, and run distributed applications"
 
-## Meant to be run a single service
+The idea behind docker is to deploy applications as a containers. As a result, by design, they do not have a lot of things make a "complete" Operating System. While docker may be similar to LXC or OpenVZ containers or virtual machines, it is also quite different in the ways they function -
 
-Whenever a docker container is launched it runs a single process which is usually your application. This very different from the traditional OS where you have multiple services running on the same OS. But this approach plays very well when you want to deploy a distributed, multi-app system giving development teams the freedom to package their own applications as a single deployable container and the Ops teams the freedom of deploying the container on different distros of their choice as well scaling the different services (as every service is a container) as per the needs. The structure of the system is such that you have the different components running as different containers which then talk to each other over well defined APIs.
+## Applications meant to be run as a single process
 
-To explain how dockerization of systems typically works, let's take an example of a 3 tier architecture in web development which has a `Postgres` data tier, a `Ruby on Rails` application tier and an `Nginx` as the front-end/presentation tier. When you would like to deploy this architecture as docker containers you would typically have a different container for each tier. So in this case you would create a container image for the Postgres database, another image for the Ruby on Rails server and one more for the Apache web server. You then deploy these images independently creating multiple containers each representing a single service.
+When a docker container is launched, it runs a single process which is usually your application. This very different from the traditional OS where you have multiple services running on the same OS. This approach works very well when you want to deploy a distributed, multi-app system. The development team gets the freedom to package their own applications as a single deployable container, the operations teams gets the freedom of deploying the container on the operating system of their choice as well as the ability to scale both horizontally and vertically the different applications. The end state is a system that has different applications and services each running as a container which then talk to each other over using the APIs and protocols that each of them supports.
+
+To explain how dockerization of systems typically works, let's take an example of a 3 tier architecture in web development which has a `PostgreSQL` data tier, a `Ruby on Rails` application tier and an `Nginx` as the load balancer tier.
+
+In the simplest of cases, using the traditional approach, one would put the database, the rails app and nginx on the same machine.
+
+Deploying this architecture as docker containers would involve building a container image for each of the tiers. You then deploy these images independently creating containers of varying sizes and capacity according to your needs.
 
 ![typical 3-tier architecture with docker containers](/assets/images/screenshots/snap-containers/3-tier-architecture-using-docker.jpg){: .screenshot .big}
 
- In the simplest case with the traditional approach you would put the database, the rails server and the apache server on the same Operating System.
 
-## Missing init (PID 1) process
+## Missing init and zombie reaping problem
 
-One of the duties of the init (PID 1) process in Linux is to collect the exit status of any orphaned processes when they die there-by ensuring that there are no orphaned zombie processes left behind. By default, most of the base images for docker don't have the init process and when you run a docker container it will simply run your application and it becomes your application's responsibility to manage the lifecycle of any child processes it creates during the run since there is no init process to do so. To workaround this problem of having to manage the orphaned child processes many users have created docker images with an init process. To read more about this problem and the workarounds have a look at this [blog post](https://blog.phusion.nl/2015/01/20/docker-and-the-pid-1-zombie-reaping-problem/).
+Init (PID 1) is a process is a direct or in-direct ancestor of all other processes. It adopts any orphaned processes when their parents die, and ensures that there are no orphaned zombie processes left behind. Most of the popular docker base images don't have the init process. When you run sucn images, they will simply run your application and it becomes your application's responsibility to manage the lifecycle of any child processes it creates during the run since there is no init process to do so. To workaround this problem of having to manage the orphaned child processes many users have created docker images with an init process. To read more about this problem and the workarounds have a look at this [blog post](https://blog.phusion.nl/2015/01/20/docker-and-the-pid-1-zombie-reaping-problem/).
 
+## Containers as VMs
 
-Both these approaches differentiate application containers like docker from the traditional Operating Systems. OpenVZ and LXC containers on the other hand are Operating System containers which try to emulate a complete operating system like environment but share the kernel of the host machine.
+In the spirit of [Single Responsibility Principle](https://en.wikipedia.org/wiki/Single_responsibility_principle), docker advocates running a single lightweight container for each service. However your application service may need ancillary services like cron, syslog among others inside the container, along with a correct init process, this sometimes nessiciates the use of a fatter container.
 
-Another aspect of having a CI environment is that many power users would like to customise their builds, install different libraries not available on Snap. In order to support this Snap allows users to run arbitrary commands in the build machines with sudo access. So we really wanted to make sure that a root user in the container doesn't break out of the container and become the root user on the host machine. Below we list some of security concerns with docker containers -
+The approaches above differentiate application containers like docker from traditional Operating System containers. OpenVZ and LXC containers run a complete operating system like environment (init, services, applications, etc) but use and share the kernel from the host machine.
 
-## Required to run as the root user
+Since most users are very familiar with linux distributions, these ancillary services also make it appealing to run a CI system.
 
-The docker daemon runs as root. Even the docker containers created need to be created by either root or by a user with sudo privileges to issue docker daemon commands. Although this is usually safe it can cause problems as docker still doesn't support User namespaces. Following is a quote from the [docker security documentation](https://docs.docker.com/articles/security/):
+## Root access on Snap build machines
 
->Today, Docker does not directly support user namespaces, but they may still be utilized by Docker containers on supported kernels, by directly using the clone syscall, or utilizing the 'unshare' utility.
+An important aspect of having a hosted CI environment is that users would like to customise their build machines, install different packages, libraries and services not available on Snap. In order to support this Snap allows users to run arbitrary commands, some of these commands may need to be run as root. We also want to ensure that a root user in the container doesn't break out of the container and become the root user on the host machine. Below we list some of security concerns with docker containers -
 
-User namespaces gives the ability to run processes and access filesystems as a root user in the containers which can be mapped to a non-root user on the host. So even if a root user breaks out of the container he doesn't get root access on the host machine but is mapped to non-root user and can cause less impact. I would also recommend you to go through the [docker security documentation](https://docs.docker.com/articles/security/) thoroughly before you start using docker in production. But hopefully docker should soon start supporting user namespaces and this concern will then no longer be valid.
+## Inability to create/manage containers as non-root users
+
+The docker daemon runs as root. Even the docker containers created need to be created by either root or by a user with sudo privileges to issue docker daemon commands. This may be safe when running trusted applications, but it may cause problems as docker still doesn't support User namespaces. Following is a quote from the [docker security documentation](https://docs.docker.com/articles/security/):
+
+> Today, Docker does not directly support user namespaces, but they may still be utilized by Docker containers on supported kernels, by directly using the clone syscall, or utilizing the 'unshare' utility.
+
+User namespaces gives the ability to run processes and access filesystems as a root user in the containers which can be mapped to a non-root user on the host. If a root user on a container were to find an exploit that allows them into the host, that user won't be root on the host machine and won't cause as much damage as a root user on the host. Docker currently does not support user namespacing, Snap therefore was not in a position to use docker containers to run untrusted code. If we were to offer docker containers as build machines, we would have to take away the ability to allow root access.
 
 ## Isolation using SELinux or AppArmor
 
-You can definitely work on hardening your container security by using systems like TOMOYO, AppArmor, SELinux, GRSEC, etc. with docker. They allow you to define policies and rules that determines what the users inside the container can do. This is mostly a whitelisting process and this approach definitely builds security when you know exactly what the application is going to do and what resources and capabilities it needs access for. So for e.g. if you know that an application needs access to a particular files or other resources, you can whitelist that program. You can read more about security using these systems on the [docker security doc](https://docs.docker.com/articles/security/).
+You can definitely work on hardening your container security by using systems like SELinux and AppArmor with docker. These tools allow whitelisting of resources and capabilities that a process/user needs process. This whitelisting technique while works great for running your application, it is not so great when running a CI service that is meant to execute arbitrary code.
 
 # What does all this mean for Snap?
 
-We needed a build environment that would be capable of running multiple services on the same container. Users of CI service expect different databases, languages and frameworks to be running and available locally. So we really wanted a full fledged Operating system which were meant to run multiple services just as you would on a normal Operating system on your development machine for example. Both LXC and OpenVZ met our needs for this as they provide OS containers.
+We needed a build environment that would be capable of running multiple services on the same container. Users of the CI service expect different databases, languages and frameworks to be running and available locally. So we really wanted to offer a full-fledged OS that closely resembles a development machine that many of us are familiar with. Both LXC and OpenVZ met our needs for this as they provide OS containers.
 
-When we looked at the docker security documentation it mentioned that "Docker containers are, by default, quite secure; especially if you take care of running your processes inside the containers as non-privileged users (i.e., non-root)." But Snap users can run as a root user in the container and hence run arbitrary commands and processes. So we couldn't really use docker for running users builds. We couldn't even add security using SELinux or AppArmor as we don't know what the user needs to run and hence can't have a whitelist of commands and resources that can be accessed from the containers. What we really need is complete isolation between build machines, and the ability to do UID namespacing. LXC with version 1.0.0 announced last year does have support for unprivileged containers with User namespaces and in Jan 2015 announced support for systemd and init which is what we really need to run our builds. In the near future we may move to LXC which suites our needs for running a full OS container as a non-root user there-by meeting our user and security needs.
+Docker containers are, by default, quite secure; as long as processes inside the containers as are running as non-root users. But a lot of our users need to run as a root user in the container. So we couldn't really use docker for running users builds.
+
+SELinux or AppArmor was also not an option to secure docker containers, because it is not possible, ahead of time to whitelist the resources a users builds may need. What Snap really needs is complete isolation between build machines, with the ability to do UID namespacing. LXC with version 1.0.0 announced last year does have support for unprivileged containers with User namespaces. This would now allow us to now run docker containers inside LXC containers to make up for the missing user namespaces in docker.
+
+In the near future we may move to LXC which suites our needs for running a full OS container as a non-root user there-by meeting our user and security needs.

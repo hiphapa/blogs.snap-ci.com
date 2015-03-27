@@ -64,7 +64,7 @@ Init (PID 1) is a process is a direct or in-direct ancestor of all other process
 
 In the spirit of [Single Responsibility Principle](https://en.wikipedia.org/wiki/Single_responsibility_principle), Docker advocates running a single lightweight container for each service. However your application service may need ancillary services like cron, syslog among others inside the container, along with a correct init process, this sometimes necessitates the use of a fatter container.
 
-The approaches above differentiate application containers like Docker from traditional Operating System containers provided by OpenVZ and LXC which run a complete operating system like environment (init, services, applications, etc) but use and share the kernel from the host machine.
+So even though application containers (provided by Docker and Rocket) are very similar to the Operating System containers (provided by OpenVZ and LXC), in the sense that they also share the kernel of the host machine, they are meant to be run as a single service on the container which differentiates them from the Operating System containers which run multiple services (init, databases, application, etc.) on the same container just like a traditional Operating System.
 
 Since most users are very familiar with linux distributions, these ancillary services also make it appealing to run a CI system.
 

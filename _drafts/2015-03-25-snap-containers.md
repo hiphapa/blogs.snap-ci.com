@@ -9,7 +9,7 @@ author: Akshay Karle
 
 Snap is a hosted Continuous Integration and Delivery service that allows users to setup their build pipelines for repositories hosted on [GitHub](https://github.com). We provide users with virtual machines that run these builds.
 
-Users that setup the builds expect their builds to start as soon as they push their code to GitHub. In order to achieve this goal, we make sure that our build machines are always prepared and ready to build as soon as we receive any build requests from GitHub. These build machines should also be identical to each other and should include the latest languages, databases and libraries required by the wide customer base that Snap has. We also need to run a sustainable business so it should be easy to run and maintain these build machines without incurring a significant hardware cost.
+Users that setup the builds expect their builds to start as soon as they push their code to GitHub. In order to achieve this goal, we make sure that our build machines are always prepared and ready to build as soon as we receive any build requests from GitHub. These build machines should also be identical to each other and should include the latest languages, databases and libraries required by the wide customer base that Snap has. We also need to run a sustainable business so it should be easy to run and maintain them without incurring a significant hardware cost.
 
 While virtualization technologies like [vmware](http://www.vmware.com/), [virtualbox](https://www.virtualbox.org/) and [Xen](http://www.xenproject.org/) provide full virtualization and can run multiple operating systems and different kernel versions, containers on the other hand use a single Linux kernel and therefore can run only Linux. All containers share the same kernel. It does not have the overhead of a true hypervisor, it is very fast, light and efficient.
 
@@ -68,9 +68,9 @@ So even though application containers (provided by Docker and Rocket) are very s
 
 Since most users are very familiar with linux distributions, these ancillary services also make it appealing to run a CI system.
 
-# Root access on Snap build machines
+# Root access on Snap builds
 
-An important aspect of having a hosted CI environment is that users would like to customise their build machines, install different packages, libraries and services not available on Snap. In order to support this Snap allows users to run arbitrary commands, some of these commands may need to be run as root. We also want to ensure that a root user in the container doesn't break out of the container and become the root user on the host machine. Below we list some of security concerns with Docker containers -
+An important aspect of having a hosted CI environment is that some users may want to customise their build environment by installing different packages, libraries and services required by their builds which are not available by default. In order to support this Snap allows users to run arbitrary commands, some of these commands may need to be run as root. We also want to ensure that a root user in the container doesn't break out of the container and become the root user on the host machine. Below we list some of security concerns with Docker containers -
 
 ### Inability to create/manage containers as non-root users
 

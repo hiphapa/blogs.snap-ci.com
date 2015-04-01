@@ -26,7 +26,7 @@ Some these issues can be addressed by using a bit of configuration management to
 
 These tools help avoid configuration drift - the sort of one-off changes that go unnoticed, undocumented.
 
-An important point to note is that these tools only apply configuration that they are asked to. If one were to apply any additional configuration outside of what these tools are aware of - you're out of luck.
+An important point to note is that these tools only apply configuration that they are asked to. If one were to apply any additional configuration outside of what these tools are aware of -- or -- if one were to forget to unapply or remove some configuration, you're out of luck. This what [Ranjib Dey](https://github.com/ranjib) calls the [Accumulator Anti-Pattern](http://server.dzone.com/articles/infrastructure-tooling-anti).
 
 A much better alternative is to tear down servers periodically and apply configuration changes every once in a while. This helps avoid and catch any configuration drift outside of configuration management tools.
 

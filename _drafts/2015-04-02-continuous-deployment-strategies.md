@@ -19,7 +19,7 @@ It is generally difficult to setup a new server should your existing server have
 Over time, one loses track of the magic configuration files, packages and services that are installed on the production machines.
 
 
-# Phoenix Servers
+# [Phoenix Servers](http://martinfowler.com/bliki/PhoenixServer.html)
 
 Some these issues can be addressed by using a bit of configuration management tools like [chef](https://www.chef.io/), [puppet](https://puppetlabs.com/), [ansible](http://www.ansible.com/home) among a few others.
 

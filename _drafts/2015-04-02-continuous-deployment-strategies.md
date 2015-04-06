@@ -55,6 +55,6 @@ This is named after the "canary in a coal mine" metaphor. The metaphor originate
 
 Canary releasing is similar to blue/green, although only a small amount of the servers are upgraded. Then, using a cookie or similar, a fraction of users are directed to the new version.
 
-This allows for the load and functionality of the site can be tested with a small group of users. If the application behaves as expected, migrate more and more servers to the new version until all the users are on the new version.
+This allows for the load and functionality of the site to be tested with a small group of users. If the application behaves as expected, migrate more and more servers to the new version until all the users are on the new version.
 
 This technique can also be used to do some interesting multi-variant testing and performance testing.

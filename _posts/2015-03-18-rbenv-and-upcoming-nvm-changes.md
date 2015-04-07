@@ -18,6 +18,8 @@ This will improve the experience for users who are used to using rbenv/rvm/nvm o
 
 For users who have any `sudo [gem|npm]` commands in their tasks, we have already migrated those tasks to remove the `sudo` prefix on them.
 
+We've removed bower and grunt as part of the node installations since most users need different versions of these tools. They can be installed using `npm install bower` and `npm install grunt`.
+
 # What will happen when new ruby or node versions are released and available?
 
 As and when new versions are released and available, they will automatically be available to Snap users. If a binary is not available, then you may get in touch with us, and we'll make it available ASAP.

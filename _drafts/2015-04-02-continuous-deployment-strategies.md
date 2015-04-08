@@ -10,34 +10,34 @@ Not very long ago, during the days of Perl/CGI and PHP (and even today); deploym
 
 Modern webapps and application servers have evolved quite a bit since then but a lot of developers continue to use a similar strategy to perform deployments. FTP is replaced by `git pull` followed by `bundle install` or `npm install` and then restarting the appserver that you use.
 
-# [Snowflake Servers](http://martinfowler.com/bliki/SnowflakeServer.html)
+# [Snowflake servers](http://martinfowler.com/bliki/SnowflakeServer.html)
 
 While this approach may work great for small webapps, it quickly falls apart when you're managing anything but a couple of servers.
 
-It is generally difficult to setup a new server should your existing server have problems. If you're looking to scale by adding more servers, it's difficult to keep each server's software, configuration and services in sync. You may not be in a position to replicate a production (or production-like) environment for testing.
+It is generally difficult to set up a new server if your existing server has problems. If you're looking to scale by adding more servers, it's difficult to keep each server's software, configuration and services in sync. You may not be in a position to replicate a production (or production-like) environment for testing.
 
 Over time, one loses track of the magic configuration files, packages and services that are installed on the production machines.
 
 
-# [Phoenix Servers](http://martinfowler.com/bliki/PhoenixServer.html)
+# [Phoenix servers](http://martinfowler.com/bliki/PhoenixServer.html)
 
-Some these issues can be addressed by using a bit of configuration management tools like [chef](https://www.chef.io/), [puppet](https://puppetlabs.com/), [ansible](http://www.ansible.com/home) among a few others.
+Some these issues can be addressed by using a bit of configuration management tools like [chef](https://www.chef.io/), [puppet](https://puppetlabs.com/), or [ansible](http://www.ansible.com/home) among a few others.
 
-These tools help avoid configuration drift - the sort of one-off changes that go unnoticed and undocumented.
+These tools help avoid configuration drift, the sort of one-off changes that go unnoticed and undocumented.
 
-An important point to note is that these tools only apply configuration that they are asked to. If one were to apply any additional configuration outside of what these tools are aware of -- or -- if one were to forget to un-apply or remove some configuration, you're out of luck. This what [Ranjib Dey](https://github.com/ranjib) calls the [Accumulator Anti-Pattern](http://server.dzone.com/articles/infrastructure-tooling-anti).
+An important point to note is that these tools only apply the configuration that they are asked to. If you applied any additional configuration outside of what these tools are aware of, or if you forgot to un-apply or remove some configuration, you'd be out of luck. This what [Ranjib Dey](https://github.com/ranjib) calls the [Accumulator Anti-Pattern](http://server.dzone.com/articles/infrastructure-tooling-anti).
 
 A much better alternative is to tear down servers periodically and apply configuration changes every once in a while. This helps avoid and catch any configuration drift outside of configuration management tools.
 
-# How does this apply to Continuous Deployment
+# How does this apply to Continuous Deployment?
 
-Continuous Deployment requires that at a very minimum, you have -
+Continuous Deployment requires that at a very minimum, you have:
 * a solid foundation of tests that gives you confidence in your software
-* a set of automation tools and scripts that give you confidence that your deployment will succeed, or rollback in case of issues.
+* a set of automation tools and scripts that give you confidence that your deployment will succeed, or rollback in case of issues
 
-In this article, we'll talk a bit about some of the more popular continuous deployment strategies and we will follow up with some more articles detailing some implementation techniques for each of them.
+In this post, we'll talk a bit about some of the more popular continuous deployment strategies. More detailed follow-up posts will get into implementation techniques for each strategy.
 
-# Blue/Green deployments
+# Blue/green deployments
 
 This is one of the simplest CD strategies to implement and get started with.
 
@@ -47,9 +47,9 @@ Blue/green is a technique for deployments where the existing running deployment 
 
 This makes rollback really simple and gives time to make sure that the new version works as expected before putting it live.
 
-# Canary Releases
+# Canary releases
 
-This is named after the "canary in a coal mine" metaphor. The metaphor originates from the times when miners used to carry caged canaries into the mines with them: if there were any dangerous gases (methane or carbon monoxide) in the mine, the canary would die before the levels of the gas reached levels hazardous to humans.
+This is named after the "canary in a coal mine" metaphor. The metaphor originates from the times when miners used to carry caged canaries into the mines with them: if there were any dangerous gases (methane or carbon monoxide) in the mine, the canary would die before the gas levels reached levels hazardous to humans.
 
 ![canary releases](/assets/images/screenshots/cd-strategies/canary.png){: .screenshot .big}
 

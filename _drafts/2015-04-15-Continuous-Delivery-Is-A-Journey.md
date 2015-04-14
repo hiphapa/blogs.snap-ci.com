@@ -20,7 +20,7 @@ Snap's product owner [Badri Janakiraman](https://github.com/badrij) and develope
 
 You can see slides from the talk [here](https://pipelineconf.files.wordpress.com/2014/03/badri-akshay-cd-is-a-journey2015.pdf) or watch the video the talk below. 
 
-<iframe src="https://player.vimeo.com/video/124285970" width="500" height="281" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe> <p><a href="https://vimeo.com/124285970">Badrinath Janakiraman &amp; Akshay Karle - Continuous Delivery: A Value System, Not A Destination - PIPELINE Conference 2015</a> from <a href="https://vimeo.com/softwarepractice">Software Engineering Practice</a> on <a href="https://vimeo.com">Vimeo</a>.</p>
+!![500x281](//vimeo.com/124285970)
 
 
 

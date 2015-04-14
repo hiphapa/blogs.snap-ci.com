@@ -1,7 +1,7 @@
 ---
 layout: post
 title:  "Continuous Delivery is Not a Destination"
-date:   2015-04-15
+date:   2015-04-14
 author: Jen Marley
 categories: announcements
 ---

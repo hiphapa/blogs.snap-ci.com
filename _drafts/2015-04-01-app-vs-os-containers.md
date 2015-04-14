@@ -5,7 +5,7 @@ date:   2015-04-01
 author: Akshay Karle
 ---
 
-Docker has recently gained a lot of popularity, and has been talked about at many recent tech conferences. Everyone wants to know how to use Docker. There are quite a few misconceptions about containers in general, the different container technologies out there, and why so many like Docker. In this blog, I would like to define containers, what Docker offers and what differentiates it from other technologies such as LXC, OpenVZ, etc.
+Docker has recently gained a lot of popularity, and has been talked about at many recent tech conferences. Everyone wants to know how to use Docker. There are quite a few misconceptions about containers in general, the different container technologies out there, and why Docker remains so popular. In this blog, I would like to define what containers are, what Docker offers, what differentiates it from other technologies such as LXC, OpenVZ, etc and some things to keep in mind while using it.
 
 # What are containers?
 

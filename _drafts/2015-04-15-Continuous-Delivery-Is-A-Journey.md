@@ -18,9 +18,9 @@ Snap's product owner [Badri Janakiraman](https://github.com/badrij) and develope
 
 -- Kick the can down the road.
 
-You can see slides from the talk [here](https://pipelineconf.files.wordpress.com/2014/03/badri-akshay-cd-is-a-journey2015.pdf) or watch the video the talk below. 
+You can see slides from the talk [here](https://pipelineconf.files.wordpress.com/2014/03/badri-akshay-cd-is-a-journey2015.pdf) or watch video of the talk below. 
 
-!![500x281](//vimeo.com/124285970)
+<iframe src="https://player.vimeo.com/video/124285970?byline=0&portrait=0" width="500" height="281" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
 
 
 

@@ -8,7 +8,9 @@ categories: article deployments
 
 Not very long ago, during the days of Perl/CGI and PHP (and even today); deployments involved *ftp*-ing your files to the webserver directory and running a bunch of migrations by shelling into the webserver.
 
-Modern webapps and application servers have evolved quite a bit since then but a lot of developers continue to use a similar strategy to perform deployments. FTP is replaced by `git pull` followed by `bundle install` or `npm install` and then restarting the appserver that you use.
+Modern webapps and application servers have evolved quite a bit since then, but many developers continue to use  similar strategies to perform deployments. FTP has been replaced by `git pull` followed by `bundle install` or `npm install` and then restarting the appserver that you use.
+
+Along with similar deployment strategies, many developers also continue to use the same servers for production. But even with the right patches, updates, etc, after a while it's easy to end up with a "snowflake server": a server with a delicate, unique configuration that does not lend itself to change. A solution to this is the "phoenix server." Here's a little more about both these concepts. 
 
 # [Snowflake servers](http://martinfowler.com/bliki/SnowflakeServer.html)
 
@@ -35,7 +37,7 @@ Continuous Deployment requires that at a very minimum, you have:
 * a solid foundation of tests that gives you confidence in your software
 * a set of automation tools and scripts that give you confidence that your deployment will succeed, or rollback in case of issues
 
-In this post, we'll talk a bit about some of the more popular continuous deployment strategies. More detailed follow-up posts will get into implementation techniques for each strategy.
+A few of the more popular continuous deployment strategies include blue/green deployments and canary releases, which I've briefly outlined below. I'll get into the related implementation techniques in more detailed, follow-up posts. 
 
 # Blue/green deployments
 

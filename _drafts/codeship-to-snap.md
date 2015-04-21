@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  "Moving from Codeship to Snap"
+title:  "moving from codeship to snap"
 date:   2015-04-24
 author: TBD
 ---

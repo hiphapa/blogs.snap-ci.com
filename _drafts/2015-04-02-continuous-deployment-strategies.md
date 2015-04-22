@@ -10,7 +10,7 @@ Not very long ago, during the days of Perl/CGI and PHP (and even today); deploym
 
 Modern webapps and application servers have evolved quite a bit since then, but many developers continue to use  similar strategies to perform deployments. FTP has been replaced by `git pull` followed by `bundle install` or `npm install` and then restarting the appserver that you use.
 
-Along with similar deployment strategies, many developers also continue to use the same servers for production. But even with the right patches, updates, etc, after a while it's easy to end up with a "snowflake server": a server with a delicate, unique configuration that does not lend itself to change. A solution to this is the "phoenix server." Here's a little more about both these concepts. 
+Along with similar deployment strategies, many developers also continue to use the same servers for months and years on end. But even with the right patches, updates, etc, after a while it's easy to end up with a "snowflake server": a server with a delicate, unique configuration that does not lend itself to change. A solution to this is the "phoenix server." Here's a little more about both these concepts.
 
 # [Snowflake servers](http://martinfowler.com/bliki/SnowflakeServer.html)
 
@@ -29,7 +29,7 @@ These tools help avoid configuration drift, the sort of one-off changes that go 
 
 An important point to note is that these tools only apply the configuration that they are asked to. If you applied any additional configuration outside of what these tools are aware of, or if you forgot to un-apply or remove some configuration, you'd be out of luck. This what [Ranjib Dey](https://github.com/ranjib) calls the [Accumulator Anti-Pattern](http://server.dzone.com/articles/infrastructure-tooling-anti).
 
-A much better alternative is to tear down servers periodically and apply configuration changes every once in a while. This helps avoid and catch any configuration drift outside of configuration management tools.
+A much better alternative is to tear down servers periodically and apply configuration changes every once in a while. This helps avoid and catch any configuration drift outside of configuration management tools. Eventually one can move to deploying new servers on every configuration change. This strategy is known as an [Immutable Server](http://martinfowler.com/bliki/ImmutableServer.html).
 
 # How does this apply to Continuous Deployment?
 
@@ -60,3 +60,4 @@ Canary releasing is similar to blue/green, although only a small amount of the s
 This allows for the load and functionality of the site to be tested with a small group of users. If the application behaves as expected, migrate more and more servers to the new version until all the users are on the new version.
 
 This technique can also be used to do some interesting multi-variant testing and performance testing.
+

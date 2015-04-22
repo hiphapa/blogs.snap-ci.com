@@ -37,7 +37,7 @@ Continuous Deployment requires that at a very minimum, you have:
 * a solid foundation of tests that gives you confidence in your software
 * a set of automation tools and scripts that give you confidence that your deployment will succeed, or rollback in case of issues
 
-A few of the more popular continuous deployment strategies include blue/green deployments and canary releases, which I've briefly outlined below. I'll get into the related implementation techniques in more detailed, follow-up posts. 
+A few of the more popular continuous deployment strategies include blue/green deployments and canary releases, which I've briefly outlined below.
 
 # Blue/green deployments
 
@@ -61,3 +61,6 @@ This allows for the load and functionality of the site to be tested with a small
 
 This technique can also be used to do some interesting multi-variant testing and performance testing.
 
+# Next steps
+
+In my next post, I'll get into the implementation techniques of blue/green deployments. A subsequent post will talk about implementing canary releases. Hope you will find this series very useful.

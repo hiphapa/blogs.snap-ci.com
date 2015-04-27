@@ -1,6 +1,7 @@
 GEM
   remote: https://rubygems.org/
   specs:
+    RedCloth (4.2.9)
     builder (3.2.2)
     chunky_png (1.2.8)
     classifier (1.3.3)
@@ -49,6 +50,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  RedCloth
   builder
   bundler
   compass

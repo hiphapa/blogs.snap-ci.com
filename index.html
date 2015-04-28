@@ -2,17 +2,12 @@
 title: 'The Snap CI Blog'
 layout: blog
 ---
-<section id="hero-blog">
-  <div class="section-wrapper">
-    <div class="span-columns-8 shift-2">
-      <h1>@thatsMingle</h1>
-      <h2>Welcome to the Mingle blog.  We fill this space with the things we learn as we build.  You can also find information about new product and feature updates.</h2>
-      <div class="benefit-icon">
-        <a href="/mingle/status/"><i class="fa fa-stethoscope fa-1x"><strong> See Mingle's Uptime Status</strong></i></a>
-      </div>
-    </div>
+<div id="hero">
+  <div class="team-hero-bg">
+    <h1 class="team-header">@SNAP_CI</h1>
+    <h3>Our team is the rockingest set of cool and nice people you will ever meet. BTW this is placeholder text. Not because I don't love you all but because I think we can be less obnoxious.</h3>
   </div>
-</section>
+</div>
 
 <div class="center-wrapper">
   <ul class="blog-post-list">
@@ -21,7 +16,7 @@ layout: blog
     <li class="blog-post-list-item">
       <div class="blog-preview-text">
         <h2 class="blog-title">
-          <a href="{{ post.url }}">{{ post.title }}</a>
+          <a href="{{ root_url }}{{ post.url }}" class="title">{% if site.titlecase %}{{ post.title | titlecase }}{% else %}{{ post.title }}{% endif %}</a>
         </h2>
         <div class="blog-excerpt">
           {% if post.excerpt %}

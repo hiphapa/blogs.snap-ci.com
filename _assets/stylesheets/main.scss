@@ -1,9 +1,3 @@
-@import 'compass';
-@import 'compass/reset';
-@import "bourbon";
-@import "base/base";
-@import "neat";
-
 body.main {
   &#content {
     @include outer-container;

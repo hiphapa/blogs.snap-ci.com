@@ -10,8 +10,7 @@
       <link rel="apple-touch-icon-precomposed" href="/assets/images/favicons/snap.png" type="image/png" />
 
       {% css_asset_tag application %}
-      - /_assets/stylesheets/main.css.scss
-      - /_assets/stylesheets/syntax.css.scss
+      - /_assets/stylesheets/application.scss
       {% endcss_asset_tag %}
 
       {% javascript_asset_tag application %}
@@ -34,23 +33,41 @@
       </script>
     </head>
     <body class="main">
-      <div class="container">
-        <div class="site">
-          <div id="header">
-            <a href="/" class="logo"></a>
-            <div class="header-actions">
-              <a href="https://github.com/login/oauth/authorize?scope=repo,user:email&amp;client_id=1cf87aecc4db30dd23a4" class="login">Login</a>
-              <a href="http://docs.snap-ci.com" class="docs">Documentation</a>
-              <a href="https://snap-ci.com" class="blogs">Home</a>
-            </div>
-          </div>
-          <div id="content">
+      <header class="dark">
+        <nav class="nav-wrapper">
+          <a href="#" class="logo"></a>
+          <a href="javascript:void(0)" class="navigation-menu-button"><i class="fa fa-bars fa-2x"></i></a>
+          <ul class="header-nav">
+            <li class="nav-link"><a href="#">Features</a>
+            <li class="nav-link"><a href="#">Plans</a>
+            <li class="nav-link"><a href="#">Blog</a>
+            <li class="nav-link"><a href="#">Try now</a>
+          </ul>
+        </nav>
+      </header>
+      <div id="content">
             {{ content }}
           </div>
-          <div id="footer">
+      </div>
+      <footer>
+        <section id="powered-by">
+          <div class="section-wrapper">
+            <a href="http://www.thoughtworks.com/products"><img src="/assets/images/twlogo-footer-snap-pink.png" alt="Thoughtworks logo"></a>
           </div>
-        </div>
-      </div> <!-- /container -->
+        </section>
+        <ul class="footer-nav">
+          <li class="nav-link"><a href="#">Team</a>
+          <li class="nav-link"><a href="#">Documentation</a>
+          <li class="nav-link"><a href="#">What's new</a>
+          <li class="nav-link"><a href="#">Community</a>
+          <li class="nav-link"><a href="#">Support</a>
+          <li class="nav-link"><a href="#">Terms</a>
+          <li class="nav-link"><a href="#">Privacy</a>
+          <li class="nav-link"><a href="#">Security</a>
+          <li class="nav-link"><a href="#">Uptime</a>
+          <li class="nav-link"><a href="https://twitter.com/snap_ci" target="_blank"><i class="fa fa-twitter"></i></a></li>
+        </ul>
+      </footer>
       <script type="text/javascript">
       (function() {
         var didInit = false;

@@ -1,5 +1,7 @@
 require "compass"
 require "jekyll_asset_pipeline"
+require "bourbon"
+require "neat"
 
 module JekyllAssetPipeline
   class CompassConverter < JekyllAssetPipeline::Converter

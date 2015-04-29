@@ -43,10 +43,6 @@ A bunch of conscious design decisions made by the Docker folks makes the creatio
 
 When a Docker container is launched, it [runs a single process](https://docs.docker.com/reference/run/). This process is usually the one that runs your application when you create containers per application. This very different from the traditional OS containers where you have multiple services running on the same OS.
 
-#### Missing init and the zombie reaping problem
-
-Init (PID 1) is a process is a direct or indirect ancestor of all other processes. It adopts any [orphaned processes](https://en.wikipedia.org/wiki/Orphan_process) when their parents die, and ensures that there are no [zombie processes](https://en.wikipedia.org/wiki/Zombie_process) left behind. Most of the popular Docker base images don't have the init process. When you run such images, they will simply run your application and it becomes your application's responsibility to manage the lifecycle of any child processes it creates during the run since there is no init process to do so. To workaround this problem of having to manage the orphaned child processes, many users have created Docker images with an init process. To read more about this problem and the workarounds have a look at this [blog post](https://blog.phusion.nl/2015/01/20/docker-and-the-pid-1-zombie-reaping-problem/).
-
 #### Layers of containers
 
 ![unprivileged containers](/assets/images/screenshots/snap-containers/docker-layers.png){: .screenshot .big}

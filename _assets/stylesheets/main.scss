@@ -28,7 +28,7 @@ body.main {
     }
 
     .home-hero-bg {
-      @include background(image-url('/assets/images/home/abstract-home-hero.svg'));
+      @include background(image-url('/images/main/abstract-home-hero.svg'));
       position: relative;
       background-size: cover;
       padding: 2em 0 4em;

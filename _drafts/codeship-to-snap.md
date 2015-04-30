@@ -3,6 +3,7 @@ layout: post
 title:  "moving from codeship to snap"
 date:   2015-04-24
 author: TBD
+index-image-url: /assets/images/place_holder.jpeg
 ---
 
 If you already use Codeship for continuous integration, you will be comfortable with many features of Snap. However, one of the first things you’ll notice when you begin using Snap is its pipeline. We created Snap’s continuous integration and delivery features around the use of pipelines. 

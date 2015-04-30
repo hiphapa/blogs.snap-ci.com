@@ -26,7 +26,7 @@ layout: default
         </div>
       </div>
       {% if post.index-image-url %}
-      <div class="blog-image" style="background-image: url(/mingle{{ post.index-image-url }})"></div>
+      <div class="blog-image" style="background-image: url({{ post.index-image-url }})"></div>
       {% endif %}
       <hr />
     </li>

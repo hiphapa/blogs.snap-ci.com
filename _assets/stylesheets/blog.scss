@@ -133,9 +133,10 @@
 }
 
 .blog-post-list {
+  float: left;
+
   .blog-post-list-item {
-    @include span-columns(10);
-    @include shift(1);
+    @include fill-parent;
 
     .blog-title {
       font-size: 2em;
@@ -146,8 +147,6 @@
       @include media($large-screen) {
         @include span-columns(6 of 10);
       }
-
-
     }
 
     .blog-image {
@@ -161,6 +160,7 @@
         background-size: cover;
       }
     }
+
     hr {
       @include fill-parent();
     }

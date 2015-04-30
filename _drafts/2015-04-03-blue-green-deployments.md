@@ -4,6 +4,7 @@ title:  Blue/Green Deployments
 date:   2015-04-03
 author: Ketan Padegaonkar
 categories: article deployments
+index-image-url: /assets/images/place_holder.jpeg
 ---
 
 In the previous article on [Continuous Deployment Strategies]({% post_url 2015-04-02-continuous-deployment-strategies %}), we explored at a high level some of the popular CD strategies.

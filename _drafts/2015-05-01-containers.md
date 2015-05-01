@@ -26,7 +26,7 @@ The difference between a container and a full-fledged VM is that all containers 
 * Type of containers that can be installed on the host should work with the kernel of the host. Hence you cannot install a Windows on a Linux host or vice-versa (although you cannot have a windows host running even windows containers as windows doesn't support containers).
 * Isolation and security -- the isolation between the kernel and the container processes is not so strong and there have been cases in the past where a process in the container has managed to escape into the kernel space of the host and such exploits may happen in the future as well.
 
-There have been a number of [container technologies](https://en.wikipedia.org/wiki/Operating-system-level_virtualization#Implementations) in the past which provide operating system containers. But very recently, one particular container technology -- [Docker](https://www.Docker.com/) -- has been gaining significant popularity in the Dev and Sys-Admin communities. Docker introduces something different that has given it such a widespread popularity and let's look at the different types of containers.
+Now that we have a general understanding of the containers let's look at the different types of containers.
 
 # OS containers
 
@@ -34,7 +34,7 @@ OS containers are virtual environments which share the kernel of the host Operat
 
 # App containers
 
-While OS containers are designed to run multiple processes and services, App containers are designed to package and run a single service. Container technologies like Docker and Rocket are examples of App containers. So even though they share the same kernel of the host there are subtle differences which I will discuss soon that make App containers different, which I would like to talk about using the example of Docker:
+While OS containers are designed to run multiple processes and services, App containers are designed to package and run a single service. Container technologies like Docker and Rocket are examples of App containers. So even though they share the same kernel of the host there are subtle differences make App containers different, which I would like to talk about using the example of Docker:
 
 #### Run a single service as a container
 
@@ -65,6 +65,8 @@ Deploying this architecture as Docker containers would involve building a contai
 ![typical 3-tier architecture with Docker containers](/assets/images/screenshots/containers/3-tier-architecture-using-docker.jpg){: .screenshot .big}
 
 # Summary
+
+So in general when you want to package and distribute your application as components, App containers serves as a good resort. Whereas, if you just want an Operating System in which you can install different libraries, languages, databases, etc., OS containers is better as it provides a complete OS-like behavior.
 
 ![OS Containers vs. App Containers](/assets/images/screenshots/containers/os-vs-app-containers.jpg){: .screenshot .big}
 

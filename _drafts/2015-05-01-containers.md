@@ -26,8 +26,6 @@ The difference between a container and a full-fledged VM is that all containers 
 * Type of containers that can be installed on the host should work with the kernel of the host. Hence you cannot install a Windows container on a Linux host or vice-versa.
 * Isolation and security -- the isolation between the host and the container is not as strong as Hypervisor based virtualization since all containers share the same kernel of the host and there have been cases in the past where [a process in the container has managed to escape into the kernel space of the host](https://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2014-9357).
 
-<!-- don't mention types of containers. Rather talk about the use cases and then mention what container suits best for that case -->
-
 # Common cases where containers can be used
 
 As of now, I have noticed that containers are being used for 2 major uses - as a usual Operating System or as an application packaging mechanism. There are also other cases like using [containers as routers](http://www.flockport.com/flockport-labs-use-lxc-containers-as-routers/) but I don't want to get into those in this blog.
@@ -78,8 +76,9 @@ Deploying this architecture as Docker containers would involve building a contai
 
 # Summary
 
-<!-- figure out a better summary and mention next article speaking about how based on this snap couldn't use docker but had to use lxc instead. -->
 So in general when you want to package and distribute your application as components, App containers serves as a good resort. Whereas, if you just want an Operating System in which you can install different libraries, languages, databases, etc., OS containers are better suited.
+
+Stay tuned for my next article in which I will cover how on the current project - [Snap CI](https://snap-ci.com) we ended up using OS containers like OpenVZ and LXC over the App containers like Docker.
 
 ![OS Containers vs. App Containers](/assets/images/screenshots/containers/os-vs-app-containers.jpg){: .screenshot .big}
 

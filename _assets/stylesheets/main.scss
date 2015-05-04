@@ -11,6 +11,9 @@ body.main {
     @include span-columns(12);
     font-size: 4em;
     color: #5d5d5d;
+    @include background(image-url('/images/main/abstract-home-hero.svg'));
+    background-size: cover;
+    position: relative;
 
     h1 {
       font-size: 0.70em;
@@ -28,9 +31,6 @@ body.main {
     }
 
     .home-hero-bg {
-      @include background(image-url('/images/main/abstract-home-hero.svg'));
-      position: relative;
-      background-size: cover;
       padding: 2em 0 2em;
       margin-bottom: -1.5em;
     }
